@@ -1,0 +1,63 @@
+.philosophy-section {
+  padding: 120px 0;
+  background: #fdfdfd;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 80px;
+}
+
+.value-card {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.03);
+  border: 1px solid #f0f0f0;
+  transition: all 0.4s ease;
+}
+
+.value-card:hover {
+  box-shadow: 0 40px 100px rgba(182, 145, 82, 0.12);
+  border-color: rgba(182, 145, 82, 0.2);
+}
+
+.icon-circle {
+  width: 90px;
+  height: 90px;
+  background: rgba(182, 145, 82, 0.08);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  transition: all 0.4s ease;
+}
+
+.value-card:hover .icon-circle {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.1) rotate(10deg);
+}
+
+.value-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.value-card p {
+  color: #666;
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

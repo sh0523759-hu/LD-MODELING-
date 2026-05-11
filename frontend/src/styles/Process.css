@@ -1,0 +1,112 @@
+.process-section {
+  padding: 120px 0;
+  background: #0a0a0a; /* Dark Background */
+  color: white;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-top: 80px;
+  position: relative;
+}
+
+.process-step-3d {
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.step-card-3d {
+  background: #151515;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  transition: box-shadow 0.3s ease;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.process-step-3d:hover .step-card-3d {
+  box-shadow: 0 40px 80px rgba(182, 145, 82, 0.1);
+  border-color: rgba(182, 145, 82, 0.3);
+}
+
+.icon-wrapper-3d {
+  width: 80px;
+  height: 80px;
+  background: rgba(182, 145, 82, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  color: var(--primary);
+  position: relative;
+  transform: translateZ(30px); /* 3D effect */
+}
+
+.step-number-3d {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 30px;
+  height: 30px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+  border: 3px solid white;
+}
+
+.process-section h2 {
+  color: #ffffff;
+}
+
+.process-step-3d h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  transform: translateZ(20px);
+  color: #ffffff;
+}
+
+.process-step-3d p {
+  color: rgba(255, 255, 255, 0.9); /* Increased opacity */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  transform: translateZ(10px);
+}
+
+.connector-3d {
+  position: absolute;
+  top: 50%;
+  left: calc(100% - 20px);
+  width: 40px;
+  height: 2px;
+  background: repeating-linear-gradient(to right, var(--primary) 0, var(--primary) 10px, transparent 10px, transparent 20px);
+  opacity: 0.2;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .process-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .connector-3d {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}

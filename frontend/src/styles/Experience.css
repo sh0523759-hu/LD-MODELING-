@@ -1,0 +1,125 @@
+.experience-accordion {
+  padding: 120px 0;
+  background: #ffffff;
+}
+
+.accordion-wrapper {
+  display: flex;
+  height: 600px;
+  gap: 15px;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.accordion-card {
+  position: relative;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  background: #000;
+  transform-style: preserve-3d;
+}
+
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.accordion-card.active .card-bg {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.card-content {
+  position: relative;
+  z-index: 10;
+  padding: 40px;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.accordion-card.active .card-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-text h3 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.card-text p {
+  color: rgba(255,255,255,0.8);
+  font-size: 1rem;
+  max-width: 300px;
+}
+
+.card-label {
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  z-index: 10;
+  color: white;
+  transition: all 0.4s ease;
+}
+
+.accordion-card.active .card-label {
+  opacity: 0;
+}
+
+.card-label span {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.card-label h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .accordion-wrapper {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .accordion-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+  .accordion-card {
+    height: 120px;
+    flex: none !important;
+  }
+  .accordion-card.active {
+    height: 350px;
+  }
+  .card-label h4 {
+    writing-mode: horizontal-tb;
+    transform: rotate(0);
+  }
+}

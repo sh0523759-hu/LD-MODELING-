@@ -1,0 +1,154 @@
+.about-modern {
+  padding: 120px 0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.about-flex {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.about-visuals {
+  position: relative;
+  height: 700px; /* Give it enough height for images */
+}
+
+.image-main-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 85%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.img-main {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+.experience-badge {
+  position: absolute;
+  top: 30px;
+  left: -20px;
+  background: var(--primary);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(182, 145, 82, 0.3);
+}
+
+.experience-badge .num {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.experience-badge .text {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.image-accent-wrapper {
+  position: absolute;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 10px solid white;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+}
+
+.img-accent {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.accent-label {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--primary);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+  color: var(--primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+h2 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.lead {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.desc {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.benefits-list {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.check-icon {
+  color: var(--primary);
+}
+
+@media (max-width: 1024px) {
+  .about-flex {
+    grid-template-columns: 1fr;
+    gap: 80px;
+  }
+  .about-visuals {
+    height: 500px;
+  }
+  .image-main-wrapper {
+    width: 100%;
+  }
+  .experience-badge {
+    left: 20px;
+    top: 20px;
+  }
+}
