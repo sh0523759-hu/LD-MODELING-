@@ -55,7 +55,7 @@ const Mosaic = () => {
                   boxShadow: "0 40px 80px rgba(182, 145, 82, 0.2)"
                 }}
               >
-                <img src={img} alt="Lifestyle" />
+                <img src={img} alt="Lifestyle" loading="lazy" />
                 <div className="mosaic-overlay-gold"></div>
               </motion.div>
             ))}

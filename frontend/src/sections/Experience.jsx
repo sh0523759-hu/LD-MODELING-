@@ -41,7 +41,7 @@ const Experience = () => {
                 flex: hoveredId === card.id ? 3.5 : 1 
               }}
             >
-              <img src={card.img} alt={card.title} className="card-bg" />
+              <img src={card.img} alt={card.title} className="card-bg" loading="lazy" />
               
               <div className="card-label">
                 <span>{card.count}</span>

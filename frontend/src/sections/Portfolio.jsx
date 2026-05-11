@@ -74,7 +74,7 @@ const Portfolio = () => {
                   }}
                 >
                   <div className="portfolio-img-box-refined">
-                    <img src={project.img} alt={project.title} />
+                    <img src={project.img} alt={project.title} loading="lazy" />
                     <div className="portfolio-overlay-refined">
                       <div className="overlay-content">
                         <span className="project-category-refined">{project.category}</span>

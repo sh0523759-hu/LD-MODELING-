@@ -28,7 +28,7 @@ const About = () => {
             }}
             transition={{ duration: 0.6, ease: "circOut" }}
           >
-            <img src="/LD Remodeling  images/imgi_11_portf10-copyright.jpg" alt="About LD Remodeling" className="img-main" />
+            <img src="/LD Remodeling  images/imgi_11_portf10-copyright.jpg" alt="About LD Remodeling" className="img-main" loading="lazy" />
             <div className="experience-badge">
               <span className="num">15+</span>
               <span className="text">Years</span>
@@ -47,7 +47,7 @@ const About = () => {
             }}
             transition={{ duration: 0.6, ease: "circOut" }}
           >
-            <img src="/LD Remodeling  images/imgi_12_our_renovations_full_01.jpg" alt="Craftsmanship" className="img-accent" />
+            <img src="/LD Remodeling  images/imgi_12_our_renovations_full_01.jpg" alt="Craftsmanship" className="img-accent" loading="lazy" />
             {isHovered && (
               <motion.div 
                 className="accent-label"
