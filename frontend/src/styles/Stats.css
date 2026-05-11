@@ -34,16 +34,26 @@
 
 @media (max-width: 1024px) {
   .stats-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
   }
   .stat-number {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
 }
 
 @media (max-width: 600px) {
+  .stats-section {
+    padding: 60px 0;
+  }
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* Keep 2 per row even on small mobile for density */
+    gap: 30px;
+  }
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  .stat-label {
+    font-size: 0.7rem;
   }
 }

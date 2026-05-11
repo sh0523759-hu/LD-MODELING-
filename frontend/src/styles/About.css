@@ -152,3 +152,24 @@ h2 {
     top: 20px;
   }
 }
+
+@media (max-width: 768px) {
+  .about-modern {
+    padding: 80px 0;
+  }
+  .about-visuals {
+    height: 400px;
+  }
+  .img-main {
+    height: 350px;
+  }
+  h2 {
+    font-size: 2.2rem;
+  }
+  .lead {
+    font-size: 1.1rem;
+  }
+  .image-accent-wrapper {
+    display: none; /* Hide floating accent on mobile to save space */
+  }
+}

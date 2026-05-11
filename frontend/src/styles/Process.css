@@ -97,7 +97,7 @@
 
 @media (max-width: 1024px) {
   .process-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
   }
   .connector-3d {
@@ -105,8 +105,18 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .process-section {
+    padding: 80px 0;
+  }
   .process-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .process-step-3d {
+    padding: 40px 30px;
+  }
+  .process-section h2 {
+    font-size: 2.2rem;
   }
 }

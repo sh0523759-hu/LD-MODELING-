@@ -1,8 +1,9 @@
 .hero-scroll-root {
   position: relative;
-  height: 500vh; /* Increased for better control */
+  height: 500vh;
   background: #000;
-  margin-top: 90px; /* Offset for fixed navbar */
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .hero-sticky-element {
@@ -11,15 +12,15 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  background: #000;
   display: flex;
   align-items: center;
-  background: #000;
+  z-index: 10;
 }
 
 .hero-images-layer {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -27,8 +28,7 @@
 
 .hero-img-full-view {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
 }
@@ -41,18 +41,16 @@
 
 .hero-dark-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 100%);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
 
 .hero-content-overlay {
   position: relative;
-  z-index: 10;
+  z-index: 20;
   width: 100%;
+  padding-top: 80px; /* Offset for navbar */
 }
 
 .hero-text-modern-box {
@@ -61,21 +59,21 @@
 
 .gold-badge {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 8px 18px;
   background: var(--primary);
   color: white;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   border-radius: 4px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .modern-h1 {
-  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-size: clamp(2rem, 8vw, 5.5rem);
   line-height: 1.1;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   font-weight: 800;
   color: white;
 }
@@ -85,45 +83,42 @@
 }
 
 .modern-p {
-  font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 50px;
-  max-width: 680px;
-  line-height: 1.8;
+  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  color: #fff;
+  margin-bottom: 40px;
+  max-width: 600px;
+  line-height: 1.7;
 }
 
 .modern-btns {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 }
 
-.btn-outline-light-modern {
-  border: 1px solid rgba(255,255,255,0.4);
-  color: white;
-  padding: 16px 35px;
-  font-weight: 700;
-}
-
-.btn-outline-light-modern:hover {
+.btn-portfolio-white {
   background: white;
   color: #000;
+  padding: 15px 35px;
+  font-weight: 800;
+  border-radius: 4px;
+  border: none;
 }
 
 .hero-v-progress {
   position: absolute;
-  right: 50px;
+  right: 40px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  z-index: 20;
+  gap: 12px;
+  z-index: 30;
 }
 
 .progress-bar {
-  width: 4px;
-  height: 60px;
+  width: 3px;
+  height: 40px;
   background: rgba(255,255,255,0.2);
   border-radius: 4px;
   transition: all 0.5s ease;
@@ -131,16 +126,23 @@
 
 .progress-bar.active {
   background: var(--primary);
-  height: 100px;
+  height: 80px;
 }
 
 @media (max-width: 768px) {
+  .hero-content-overlay {
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   .modern-h1 {
-    font-size: 3.2rem;
+    font-size: 2rem;
   }
   .modern-btns {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
+    align-items: stretch;
+  }
+  .hero-v-progress {
+    display: none;
   }
 }

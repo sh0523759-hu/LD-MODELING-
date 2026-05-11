@@ -1,0 +1,69 @@
+.mosaic-section {
+  padding: 150px 0;
+  background: #ffffff;
+  perspective: 2000px; /* Enable 3D */
+}
+
+.mosaic-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.mosaic-info h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.mosaic-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  transform-style: preserve-3d;
+}
+
+.mosaic-img-box {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 350px;
+  background: #000;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.mosaic-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.mosaic-overlay-gold {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(182, 145, 82, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.mosaic-img-box:hover .mosaic-overlay-gold {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .mosaic-grid-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .mosaic-img-box {
+    height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mosaic-gallery {
+    grid-template-columns: 1fr;
+  }
+}

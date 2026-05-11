@@ -4,6 +4,7 @@ import Hero from './sections/Hero';
 import Experience from './sections/Experience';
 import About from './sections/About';
 import Philosophy from './sections/Philosophy';
+import Mosaic from './sections/Mosaic';
 import Process from './sections/Process';
 import Portfolio from './sections/Portfolio';
 import Stats from './sections/Stats';
@@ -22,6 +23,7 @@ function App() {
         <Experience />
         <About />
         <Philosophy />
+        <Mosaic />
         <Stats />
         <Process />
         <Portfolio />

@@ -57,7 +57,27 @@
 
 @media (max-width: 1024px) {
   .values-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .philosophy-section {
+    padding: 80px 0;
+  }
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .value-card {
+    padding: 40px 30px;
+  }
+  .value-card h3 {
+    font-size: 1.3rem;
+  }
+  .icon-circle {
+    width: 70px;
+    height: 70px;
   }
 }
