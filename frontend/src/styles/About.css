@@ -1,175 +1,115 @@
-.about-modern {
-  padding: 120px 0;
-  background: #ffffff;
-  overflow: hidden;
-}
-
-.about-flex {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  align-items: center;
-}
-
-.about-visuals {
+.about-brutalist {
+  background-color: #000;
   position: relative;
-  height: 700px; /* Give it enough height for images */
 }
 
-.image-main-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 85%;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.1);
-  z-index: 10;
+.brutalist-grid-refined {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 10vw;
+  align-items: flex-start;
 }
 
-.img-main {
+.brutalist-heading-v2 {
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 0.8;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.hollow-text {
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+}
+
+.brutalist-info-divider {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 4rem;
+}
+
+.brutalist-editorial-p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+.brutalist-cta-box {
+  margin-top: 4rem;
+}
+
+.brutalist-frame {
+  position: relative;
   width: 100%;
-  height: 600px;
-  object-fit: cover;
-  display: block;
-}
-
-.experience-badge {
-  position: absolute;
-  top: 30px;
-  left: -20px;
-  background: var(--primary);
-  color: white;
-  padding: 15px 25px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(182, 145, 82, 0.3);
-}
-
-.experience-badge .num {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.experience-badge .text {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-}
-
-.image-accent-wrapper {
-  position: absolute;
-  border-radius: 20px;
+  height: 60vh;
+  border: 1px solid #222;
   overflow: hidden;
-  border: 10px solid white;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
 }
 
-.img-accent {
+.brutalist-main-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  filter: grayscale(1);
 }
 
-.accent-label {
+.frame-overlay-text {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  background: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-weight: 800;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  color: var(--primary);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  top: 2rem;
+  right: 2rem;
+  background: var(--primary);
+  padding: 0.5rem 1rem;
 }
 
-.subtitle {
-  color: var(--primary);
-  font-weight: 700;
-  text-transform: uppercase;
+.since {
+  font-size: 0.6rem;
+  font-weight: 900;
+  color: #fff;
   letter-spacing: 0.2em;
-  font-size: 0.8rem;
-  margin-bottom: 20px;
-  display: block;
 }
 
-h2 {
-  font-size: 3rem;
-  line-height: 1.1;
-  margin-bottom: 30px;
-}
-
-.lead {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #222;
-  margin-bottom: 20px;
-}
-
-.desc {
-  color: #666;
-  line-height: 1.8;
-  margin-bottom: 40px;
-}
-
-.benefits-list {
-  display: grid;
-  gap: 15px;
-  margin-bottom: 50px;
-}
-
-.benefit-item {
+.stats-brutalist-row {
   display: flex;
-  align-items: center;
-  gap: 15px;
-  font-weight: 600;
-  color: #333;
+  justify-content: space-between;
+  margin-top: 4rem;
+  padding: 0 2rem;
 }
 
-.check-icon {
+.stat-unit {
+  display: flex;
+  flex-direction: column;
+}
+
+.unit-num {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+
+.unit-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
   color: var(--primary);
+}
+
+.about-parallax-text {
+  margin-top: 15rem;
+  opacity: 0.15;
 }
 
 @media (max-width: 1024px) {
-  .about-flex {
+  .brutalist-grid-refined {
     grid-template-columns: 1fr;
-    gap: 80px;
+    gap: 6rem;
   }
-  .about-visuals {
-    height: 500px;
+  .brutalist-info-divider {
+    border-left: none;
+    padding-left: 0;
   }
-  .image-main-wrapper {
-    width: 100%;
-  }
-  .experience-badge {
-    left: 20px;
-    top: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .about-modern {
-    padding: 80px 0;
-  }
-  .about-visuals {
-    height: 400px;
-  }
-  .img-main {
-    height: 350px;
-  }
-  h2 {
-    font-size: 2.2rem;
-  }
-  .lead {
-    font-size: 1.1rem;
-  }
-  .image-accent-wrapper {
-    display: none; /* Hide floating accent on mobile to save space */
+  .brutalist-frame {
+    height: 40vh;
   }
 }

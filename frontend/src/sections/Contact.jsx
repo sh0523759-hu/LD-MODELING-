@@ -1,103 +1,97 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import KineticText from '../components/KineticText';
+import MagneticButton from '../components/MagneticButton';
 import '../styles/Contact.css';
 
 const Contact = () => {
   return (
-    <section id="contact" className="contact-modern-v2">
-      <div className="container">
-        <div className="contact-grid-modern">
+    <section id="contact" className="contact-brutalist">
+      <div className="haze-top"></div>
+      
+      <div className="contact-kinetic-header">
+        <KineticText text="GET IN TOUCH " direction="left" />
+      </div>
+
+      <div className="container contact-main-grid">
+        <div className="contact-info-col">
           <motion.div 
-            className="contact-info-panel"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            className="contact-text-box"
           >
-            <span className="subtitle">Contact Us</span>
-            <h2>Let's Build <span className="highlight">Something Extraordinary</span> Together</h2>
-            <p>Ready to start your home transformation? Contact us today for a free, no-obligation consultation.</p>
+            <h2 className="brutalist-contact-title">
+              LET'S BUILD <br />
+              <span className="blackletter highlight">Extraordinary</span> <br />
+              TOGETHER
+            </h2>
+            <p className="contact-intro-p">
+              Ready to start your home transformation? Contact us today for a free, no-obligation consultation.
+            </p>
 
-            <div className="info-cards">
-              <div className="info-card-item">
-                <div className="icon-box"><Phone size={24} /></div>
-                <div className="details">
-                  <span className="label">Call Us</span>
-                  <a href="tel:9042994364">(904) 299-4364</a>
-                </div>
+            <div className="contact-details-list">
+              <div className="contact-detail-item">
+                <span className="detail-label">Call Us</span>
+                <a href="tel:9042994364" className="detail-value">(904) 299-4364</a>
               </div>
-              <div className="info-card-item">
-                <div className="icon-box"><Mail size={24} /></div>
-                <div className="details">
-                  <span className="label">Email Us</span>
-                  <a href="mailto:Ldremodelingjacksonville@gmail.com">Ldremodelingjacksonville@gmail.com</a>
-                </div>
+              <div className="contact-detail-item">
+                <span className="detail-label">Email Us</span>
+                <a href="mailto:Ldremodelingjacksonville@gmail.com" className="detail-value">Ldremodelingjacksonville@gmail.com</a>
               </div>
-              <div className="info-card-item">
-                <div className="icon-box"><MapPin size={24} /></div>
-                <div className="details">
-                  <span className="label">Visit Us</span>
-                  <span>Jacksonville, Florida</span>
-                </div>
+              <div className="contact-detail-item">
+                <span className="detail-label">Visit Us</span>
+                <span className="detail-value">Jacksonville, Florida</span>
               </div>
             </div>
           </motion.div>
+        </div>
 
-          <motion.div 
-            className="contact-form-panel"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+        <div className="contact-form-col">
+          <motion.form 
+            className="brutalist-form"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
           >
-            <form className="luxury-form">
-              <div className="form-row">
-                <div className="input-group">
-                  <motion.input 
-                    type="text" placeholder="Full Name" required 
-                    whileFocus={{ y: -5, borderColor: '#b69152' }}
-                  />
-                </div>
-                <div className="input-group">
-                  <motion.input 
-                    type="email" placeholder="Email Address" required 
-                    whileFocus={{ y: -5, borderColor: '#b69152' }}
-                  />
-                </div>
+            <div className="input-row">
+              <div className="field-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="John Doe" required />
               </div>
-              <div className="form-row">
-                <div className="input-group">
-                  <motion.input 
-                    type="tel" placeholder="Phone Number" required 
-                    whileFocus={{ y: -5, borderColor: '#b69152' }}
-                  />
-                </div>
-                <div className="input-group">
-                  <motion.input 
-                    type="text" placeholder="Project Type" required 
-                    whileFocus={{ y: -5, borderColor: '#b69152' }}
-                  />
-                </div>
+              <div className="field-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="john@example.com" required />
               </div>
-              <div className="input-group">
-                <motion.textarea 
-                  placeholder="Tell us about your dream project..." rows="5" required 
-                  whileFocus={{ y: -5, borderColor: '#b69152' }}
-                />
+            </div>
+
+            <div className="input-row">
+              <div className="field-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="(904) 000-0000" required />
               </div>
-              <motion.button 
-                type="submit" 
-                className="btn btn-primary btn-full btn-icon-v2"
-                whileHover={{ scale: 1.02, backgroundColor: '#a07d40' }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Send Message <Send size={20} />   
-              </motion.button>
-            </form>
-          </motion.div>
+              <div className="field-group">
+                <label>Project Type</label>
+                <input type="text" placeholder="Kitchen, Bath, Full Home" required />
+              </div>
+            </div>
+
+            <div className="field-group">
+              <label>Message</label>
+              <textarea placeholder="Tell us about your dream project..." rows="4"></textarea>
+            </div>
+
+            <div className="form-submit-row">
+              <MagneticButton>
+                <button type="submit" className="btn btn-primary btn-submit">
+                  SEND MESSAGE <ArrowRight size={20} />
+                </button>
+              </MagneticButton>
+            </div>
+          </motion.form>
         </div>
       </div>
+
+      <div className="haze-bottom"></div>
     </section>
   );
 };

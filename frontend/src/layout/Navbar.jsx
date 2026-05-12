@@ -16,63 +16,54 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#about' },
+    { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
     { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Contact Us', href: '#contact' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <header className={`header-fixed-clean ${isScrolled ? 'scrolled' : ''}`}>
-      <nav className="navbar-clean">
-        <div className="container nav-container">
-          <a href="/" className="logo">
-            <img src="/LD Remodeling  images/imgi_1_LD-Remodling-1.png" alt="LD Remodeling" />
+    <header className={`header-kinetic ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className="navbar-kinetic">
+        <div className="container nav-container-kinetic">
+          <a href="/" className="kinetic-logo">
+            <span className="blackletter highlight">LD</span> 
+            <span className="logo-sans">REMODELING</span>
           </a>
           
-          <div className="nav-links-desktop">
+          <div className="nav-links-kinetic">
             {navLinks.map((link) => (
-              <motion.a 
-                key={link.name} 
-                href={link.href}
-                whileHover={{ color: '#b69152' }}
-              >
+              <a key={link.name} href={link.href} className="nav-item-kinetic">
                 {link.name}
-              </motion.a>
+              </a>
             ))}
-            <div className="btn-nav-wrapper">
-              <a href="#contact" className="btn-nav">Get a Quote</a>
-            </div>
+            <a href="#contact" className="btn-kinetic">KICKSTART</a>
           </div>
 
-          <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(true)}>
-            <Menu size={24} />
+          <button className="mobile-btn-kinetic" onClick={() => setIsMobileMenuOpen(true)}>
+            <Menu size={30} />
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
-            className="mobile-menu"
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
+            className="mobile-overlay-kinetic"
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -100 }}
           >
-            <div className="mobile-menu-header">
-              <img src="/LD Remodeling  images/imgi_1_LD-Remodling-1.png" alt="LD Remodeling" className="mobile-logo" />
-              <button onClick={() => setIsMobileMenuOpen(false)}><X size={30} /></button>
+            <div className="mobile-header-row">
+               <span className="blackletter highlight">LD</span>
+               <button onClick={() => setIsMobileMenuOpen(false)}><X size={40} /></button>
             </div>
-            <div className="mobile-links">
+            <div className="mobile-links-column">
               {navLinks.map((link) => (
                 <a key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
                   {link.name}
                 </a>
               ))}
-              <a href="#contact" className="btn-mobile" onClick={() => setIsMobileMenuOpen(false)}>Get a Quote</a>
             </div>
           </motion.div>
         )}

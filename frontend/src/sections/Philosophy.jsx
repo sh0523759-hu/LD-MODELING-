@@ -1,21 +1,21 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import ScrollReveal from '../components/ScrollReveal';
 import { ShieldCheck, Heart, Zap } from 'lucide-react';
 import '../styles/Philosophy.css';
 
 const values = [
   {
-    icon: <ShieldCheck size={40} />,
+    icon: <ShieldCheck size={40} strokeWidth={1} />,
     title: "Uncompromising Integrity",
     desc: "We believe in honest communication, transparent pricing, and doing the job right the first time."
   },
   {
-    icon: <Heart size={40} />,
+    icon: <Heart size={40} strokeWidth={1} />,
     title: "Passion for Detail",
     desc: "Our craftsmen are obsessed with the little things that turn a good house into a great home."
   },
   {
-    icon: <Zap size={40} />,
+    icon: <Zap size={40} strokeWidth={1} />,
     title: "Innovative Solutions",
     desc: "We use the latest technology and materials to solve complex remodeling challenges with ease."
   }
@@ -23,41 +23,24 @@ const values = [
 
 const Philosophy = () => {
   return (
-    <section className="philosophy-section">
+    <section className="philosophy-editorial">
       <div className="container">
-        <motion.div 
-          className="section-title-wrapper text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <span className="subtitle">Why Choose Us</span>
-          <h2>A Philosophy of <span className="highlight">Excellence</span></h2>
-        </motion.div>
+        <ScrollReveal>
+          <div className="section-header-centered">
+            <span className="subtitle">Core Values</span>
+            <h2 className="editorial-heading">Built on <span className="serif-italic">Trust</span></h2>
+          </div>
+        </ScrollReveal>
 
-        <div className="values-grid">
+        <div className="values-editorial-grid">
           {values.map((item, index) => (
-            <motion.div 
-              key={index}
-              className="value-card"
-              initial={{ opacity: 0, y: 100, rotateX: 45 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ 
-                duration: 0.8, 
-                delay: index * 0.15,
-                type: "spring",
-                stiffness: 100 
-              }}
-              whileHover={{ 
-                y: -20,
-                boxShadow: "0 40px 80px rgba(182, 145, 82, 0.15)"
-              }}
-            >
-              <div className="icon-circle">{item.icon}</div>
-              <h3>{item.title}</h3>
-              <p>{item.desc}</p>
-            </motion.div>
+            <ScrollReveal key={index} delay={index * 0.2}>
+              <div className="value-editorial-card">
+                <div className="value-icon-box">{item.icon}</div>
+                <h3 className="value-title">{item.title}</h3>
+                <p className="value-desc">{item.desc}</p>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

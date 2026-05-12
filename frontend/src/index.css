@@ -1,117 +1,141 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=UnifrakturMaguntia&display=swap');
 
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 :root {
   --primary: #b69152;
-  --primary-hover: #9c7b45;
-  --bg: #ffffff;
-  --bg-alt: #fcfbf8;
-  --text: #1a1a1a;
-  --text-muted: #666666;
-  --border: #eeeeee;
-  --white: #ffffff;
-  --black: #000000;
+  --primary-hover: #d4af37;
+  --accent-glow: #0033ff; /* Deep blue/purple glow */
+  --bg: #000000;
+  --text: #ffffff;
+  --text-muted: #888888;
+  --border: #222222;
   
-  --container-width: 1280px;
-  --header-height: 80px;
+  --container-width: 1600px;
+  --header-height: 100px;
   
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
+  cursor: crosshair; /* Brutalist feel */
 }
 
 body {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.2;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.2;
-  color: var(--text);
+/* Massive Typography */
+h1, h2, h3 {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.04em;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: var(--transition);
+.massive-header {
+  font-size: clamp(4rem, 20vw, 25rem);
+  line-height: 0.8;
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
 }
 
-ul {
-  list-style: none;
+.blackletter {
+  font-family: 'UnifrakturMaguntia', cursive;
+  text-transform: none;
+  font-weight: 400;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.highlight {
+  color: var(--primary);
+}
+
+/* Glowing Haze Utilities */
+.haze-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  background: linear-gradient(to bottom, var(--accent-glow) 0%, transparent 100%);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.haze-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  background: linear-gradient(to top, var(--accent-glow) 0%, transparent 100%);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.section-padding {
+  padding: 15rem 0;
 }
 
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 4rem;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.875rem 2rem;
-  font-weight: 500;
+  padding: 1.5rem 3rem;
+  font-weight: 800;
   border-radius: 0;
   cursor: pointer;
   transition: var(--transition);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  border: 1px solid #fff;
 }
 
 .btn-primary {
-  background-color: var(--primary);
-  color: var(--white);
-  border: 1px solid var(--primary);
+  background-color: #fff;
+  color: #000;
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-hover);
-  border-color: var(--primary-hover);
+  background-color: #000;
+  color: #fff;
 }
 
-.btn-outline {
-  background-color: transparent;
-  color: var(--text);
-  border: 1px solid var(--text);
+.force-sticky {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
 }
 
-.btn-outline:hover {
-  background-color: var(--text);
-  color: var(--white);
-}
-
-/* Section Spacing */
-section {
-  padding: 6rem 0;
-}
-
-@media (max-width: 768px) {
-  section {
-    padding: 4rem 0;
+@media (max-width: 1024px) {
+  .massive-header {
+    font-size: clamp(3rem, 15vw, 10rem);
+  }
+  .section-padding {
+    padding: 8rem 0;
+  }
+  .container {
+    padding: 0 1.5rem;
   }
 }

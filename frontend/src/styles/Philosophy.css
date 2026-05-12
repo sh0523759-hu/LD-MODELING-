@@ -1,83 +1,52 @@
-.philosophy-section {
-  padding: 120px 0;
-  background: #fdfdfd;
+.philosophy-editorial {
+  background-color: #0a0a0a;
 }
 
-.values-grid {
+.section-header-centered {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.values-editorial-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-top: 80px;
+  gap: 4rem;
 }
 
-.value-card {
-  background: white;
-  padding: 50px 40px;
-  border-radius: 30px;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.03);
-  border: 1px solid #f0f0f0;
-  transition: all 0.4s ease;
+.value-editorial-card {
+  padding: 4rem 3rem;
+  background-color: #000;
+  border: 1px solid #1a1a1a;
+  height: 100%;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.value-card:hover {
-  box-shadow: 0 40px 100px rgba(182, 145, 82, 0.12);
-  border-color: rgba(182, 145, 82, 0.2);
+.value-editorial-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-10px);
 }
 
-.icon-circle {
-  width: 90px;
-  height: 90px;
-  background: rgba(182, 145, 82, 0.08);
+.value-icon-box {
   color: var(--primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 30px;
-  transition: all 0.4s ease;
+  margin-bottom: 2rem;
 }
 
-.value-card:hover .icon-circle {
-  background: var(--primary);
-  color: white;
-  transform: scale(1.1) rotate(10deg);
+.value-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
 }
 
-.value-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  font-weight: 800;
-}
-
-.value-card p {
-  color: #666;
-  line-height: 1.7;
+.value-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
 }
 
 @media (max-width: 1024px) {
-  .values-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .philosophy-section {
-    padding: 80px 0;
-  }
-  .values-grid {
+  .values-editorial-grid {
     grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  .value-card {
-    padding: 40px 30px;
-  }
-  .value-card h3 {
-    font-size: 1.3rem;
-  }
-  .icon-circle {
-    width: 70px;
-    height: 70px;
+    gap: 2rem;
   }
 }

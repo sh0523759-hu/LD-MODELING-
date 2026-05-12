@@ -1,17 +1,11 @@
 import React from 'react';
 import Navbar from './layout/Navbar';
 import Hero from './sections/Hero';
-import Experience from './sections/Experience';
 import About from './sections/About';
-import Philosophy from './sections/Philosophy';
-import Mosaic from './sections/Mosaic';
-import Process from './sections/Process';
-import Portfolio from './sections/Portfolio';
-import Stats from './sections/Stats';
-import Testimonials from './sections/Testimonials';
+import ServiceDeck from './sections/ServiceDeck';
+import HorizontalProjects from './sections/HorizontalProjects';
 import Contact from './sections/Contact';
 import Footer from './layout/Footer';
-import FAQ from './sections/FAQ';
 import './styles/AppStyles.css';
 
 function App() {
@@ -20,15 +14,9 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <Experience />
         <About />
-        <Philosophy />
-        <Mosaic />
-        <Stats />
-        <Process />
-        <Portfolio />
-        <Testimonials />
-        <FAQ />
+        <ServiceDeck />
+        <HorizontalProjects />
         <Contact />
       </main>
       <Footer />
