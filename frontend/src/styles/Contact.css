@@ -128,3 +128,31 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+  .brutalist-contact-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+  .contact-intro-p {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  .contact-details-list {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-brutalist {
+    padding: 8rem 0;
+  }
+  .brutalist-contact-title {
+    font-size: 2.2rem;
+  }
+  .brutalist-form {
+    padding: 1.5rem;
+  }
+  .detail-value {
+    font-size: 1.2rem;
+  }
+}

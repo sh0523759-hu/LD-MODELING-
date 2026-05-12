@@ -26,10 +26,11 @@ const Navbar = () => {
     <header className={`header-kinetic ${isScrolled ? 'scrolled' : ''}`}>
       <nav className="navbar-kinetic">
         <div className="container nav-container-kinetic">
-          <a href="/" className="kinetic-logo">
+          <div className="kinetic-logo">
             <span className="blackletter highlight">LD</span> 
             <span className="logo-sans">REMODELING</span>
-          </a>
+            <div style={{ width: '10px', height: '10px', background: 'red', borderRadius: '50%' }}></div>
+          </div>
           
           <div className="nav-links-kinetic">
             {navLinks.map((link) => (

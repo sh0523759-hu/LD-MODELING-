@@ -1,146 +1,134 @@
 .hero-kinetic {
-  height: 200vh;
   position: relative;
+  width: 100%;
+  min-height: 110vh;
   background: #000;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: visible;
 }
 
 .hero-bg-container {
-  position: sticky;
+  position: absolute;
   top: 0;
-  height: 100vh;
+  left: 0;
   width: 100%;
-  z-index: 1;
-  overflow: hidden;
+  height: 100%;
+  z-index: 0;
 }
 
 .hero-bg-parallax {
   width: 100%;
-  height: 130%;
+  height: 100%;
+  position: relative;
 }
 
 .hero-background-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.25) grayscale(0.5);
+  opacity: 0.4;
 }
 
 .hero-kinetic-content {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 8vh 0;
+  position: relative;
+  z-index: 10;
+  padding: 0;
+  margin-top: -10vh; /* Move content up to prevent bottom cutting */
 }
 
 .hero-main-info-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 5vw;
+  text-align: center;
+  width: 100%;
 }
 
 .brutalist-title-v2 {
-  font-size: clamp(4rem, 12vw, 10rem);
-  line-height: 1.1; /* Increased from 0.8 to prevent clipping */
+  font-size: clamp(4rem, 10vw, 12rem);
+  line-height: 0.9; 
   color: #fff;
   margin: 0;
-  padding-bottom: 2rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  padding: 2rem 0;
+}
+
+.tagline {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  font-weight: 800;
+}
+
+.hero-editorial-p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+.hero-cta-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
 }
 
 .hero-sub-stats {
   display: flex;
-  gap: 4rem;
-  margin-top: 4rem;
-}
-
-.hero-stat {
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 5rem;
 }
 
 .s-num {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 900;
   color: var(--primary);
   line-height: 1;
 }
 
-.s-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--text-muted);
-  margin-top: 0.5rem;
-}
-
-.info-content-box {
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  padding-left: 4rem;
-}
-
-.tagline {
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.4em;
-  color: var(--primary);
-  margin-bottom: 2rem;
-}
-
-.hero-editorial-p {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 4rem;
-  max-width: 450px;
-}
-
-.hero-cta-row {
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-}
-
-.magnetic-wrapper {
-  display: inline-block;
-}
-
-.scroll-reveal-indicator {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.dot-indicator {
-  width: 8px;
-  height: 8px;
-  background: var(--primary);
-  border-radius: 50%;
-}
-
-.scroll-reveal-indicator span {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: var(--text-muted);
-  font-weight: 800;
-}
-
 @media (max-width: 1024px) {
-  .hero-main-info-grid {
-    grid-template-columns: 1fr;
-    gap: 4rem;
+  .brutalist-title-v2 {
+    font-size: 4rem;
   }
-  .info-content-box {
-    border-left: none;
-    padding-left: 0;
+}
+
+@media (max-width: 768px) {
+  .brutalist-title-v2 {
+    font-size: clamp(3rem, 12vw, 4rem);
+    padding: 1rem 0;
+  }
+  .hero-cta-row {
+    flex-direction: column;
+    gap: 1.5rem;
   }
   .hero-sub-stats {
-    display: none;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brutalist-title-v2 {
+    font-size: clamp(2.5rem, 10vw, 3rem);
+  }
+  .hero-editorial-p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  .s-num {
+    font-size: 3rem;
+  }
+  .tagline {
+    font-size: 0.6rem;
   }
 }

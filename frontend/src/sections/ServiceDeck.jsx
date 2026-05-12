@@ -24,49 +24,49 @@ const services = [
 ];
 
 const ServiceCard = ({ service, index }) => {
-  const cardRef = React.useRef(null);
+  const container = React.useRef(null);
   const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"]
-  });
+    target: container,
+    offset: ['start end', 'start start']
+  })
 
-  // Fun scroll-based effects
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.9]);
-  const rotate = useTransform(scrollYProgress, [0, 0.5, 1], [-5, 0, 5]);
+  // Fade in and scale up as it comes into view
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
 
   return (
-    <div ref={cardRef} className="sticky-card-box" style={{ top: `${150 + index * 40}px` }}>
-      <motion.div 
-        style={{ scale, rotate }}
-        className="service-card"
-      >
-        <div className="card-left">
-          <span className="card-number">{service.id}</span>
-          <h3 className="card-title">{service.title}</h3>
-          <p className="card-desc">{service.desc}</p>
-          <div className="card-footer">
-            <a href="#contact" className="card-link-magnetic">Request Consultation</a>
-          </div>
+    <motion.div 
+      ref={container}
+      style={{ 
+        opacity, 
+        scale,
+        top: `calc(10vh + ${index * 30}px)`, /* Offset each card slightly to see the stack */
+        zIndex: index + 1
+      }} 
+      className="service-card"
+    >
+      <div className="card-left">
+        <span className="card-number">{service.id}</span>
+        <h3 className="card-title">{service.title}</h3>
+        <p className="card-desc">{service.desc}</p>
+        <div className="card-footer">
+          <a href="#contact" className="card-link-magnetic">Request Consultation</a>
         </div>
-        <div className="card-right">
-          <motion.img 
-            initial={{ scale: 1.2 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 1.5 }}
-            src={service.img} 
-            alt={service.title} 
-            className="card-img" 
-          />
-        </div>
-      </motion.div>
-    </div>
+      </div>
+      <div className="card-right">
+        <img 
+          src={service.img} 
+          alt={service.title} 
+          className="card-img" 
+        />
+      </div>
+    </motion.div>
   );
 };
 
 const ServiceDeck = () => {
   return (
     <div className="service-deck-root">
-      <div className="haze-top"></div>
       <div className="container deck-intro-aligned">
         <div className="title-stack">
           <span className="blackletter highlight">The Masterlist</span>
@@ -79,10 +79,13 @@ const ServiceDeck = () => {
 
       <div className="cards-wrapper">
         {services.map((service, index) => (
-          <ServiceCard key={service.id} service={service} index={index} />
+          <ServiceCard 
+            key={service.id} 
+            service={service} 
+            index={index} 
+          />
         ))}
       </div>
-      <div className="haze-bottom"></div>
     </div>
   );
 };

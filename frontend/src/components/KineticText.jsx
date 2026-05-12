@@ -21,9 +21,9 @@ const KineticText = ({ text, speed = 1, direction = "left", className = "" }) =>
   const skew = useSpring(skewBase, { stiffness: 100, damping: 20 });
 
   return (
-    <div ref={targetRef} className={`kinetic-text-wrapper ${className}`} style={{ overflow: "hidden", width: "100%" }}>
+    <div ref={targetRef} className={`kinetic-text-wrapper ${className}`} style={{ overflow: "hidden", width: "100%", position: "relative" }}>
       <motion.div 
-        style={{ x: xTranslate, skewX: skew }} 
+        style={{ x: xTranslate, skewX: skew, display: "inline-block", whiteSpace: "nowrap" }} 
         className="massive-header"
       >
         {text} {text} {text}

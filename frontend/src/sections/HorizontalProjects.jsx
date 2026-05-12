@@ -8,49 +8,49 @@ const projects = [
   { id: 2, img: "/LD Remodeling  images/imgi_13_portf14-copyright-890x664-1.jpg", category: "Bathroom", title: "THE MODERN RETREAT" },
   { id: 3, img: "/LD Remodeling  images/imgi_14_UCS-Woodbridge-Kitchen-by-Craig-4-of-31-scaled-1.jpg", category: "Kitchen", title: "TRADITIONAL ELEGANCE" },
   { id: 4, img: "/LD Remodeling  images/imgi_15_4914-Bramhope-Lane-Ellicott-large-016-024-Kitchen-1500x1000-72dpi.jpg", category: "Living", title: "THE OPEN HORIZON" },
+  { id: 5, img: "/LD Remodeling  images/imgi_12_our_renovations_full_01.jpg", category: "Renovation", title: "COMPLETE OVERHAUL" },
+  { id: 6, img: "/LD Remodeling  images/imgi_14_UCS-Woodbridge-Kitchen-by-Craig-4-of-31-scaled-1.jpg", category: "Custom", title: "BESPOKE FINISHES" },
 ];
 
 const HorizontalProjects = () => {
-  const targetRef = useRef(null);
+  const sectionRef = useRef(null);
+  
   const { scrollYProgress } = useScroll({
-    target: targetRef,
+    target: sectionRef,
+    offset: ["start start", "end end"]
   });
 
-  // Increased range to avoid black gap at the end
-  const x = useTransform(scrollYProgress, [0, 0.9], ["0%", "-75%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0vw", `-${(projects.length - 1) * 100}vw`]);
 
   return (
-    <div ref={targetRef} className="horizontal-kinetic-root">
+    <section ref={sectionRef} className="horizontal-kinetic-root" style={{ background: '#050505', minHeight: `${projects.length * 100}vh` }}>
       <div className="horizontal-sticky-box force-sticky">
-        <div className="bg-kinetic-text">
+        <div className="bg-kinetic-text" style={{ opacity: 0.1 }}>
           <KineticText text="PORTFOLIO " direction="left" />
         </div>
         
         <motion.div style={{ x }} className="horizontal-items-row">
           {projects.map((project) => (
             <div key={project.id} className="horizontal-item-card-kinetic">
-              <div className="item-img-container">
-                <img src={project.img} alt={project.title} />
-                <div className="item-text-overlay">
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    className="overlay-inner"
-                  >
-                    <span className="item-cat">{project.category}</span>
-                    <h3 className="item-title-massive">{project.title}</h3>
-                  </motion.div>
+              <div className="project-layout-side">
+                <div className="item-img-container-side">
+                  <img src={project.img} alt={project.title} className="vibrant-img" />
+                </div>
+                <div className="item-text-side">
+                  <span className="item-cat">{project.category}</span>
+                  <h3 className="item-title-massive">{project.title}</h3>
+                  <p className="item-desc-short">High-energy transformation built for modern impact.</p>
                 </div>
               </div>
             </div>
           ))}
         </motion.div>
 
-        <div className="bg-kinetic-text-bottom">
+        <div className="bg-kinetic-text-bottom" style={{ opacity: 0.1 }}>
           <KineticText text="SHOWCASE " direction="right" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

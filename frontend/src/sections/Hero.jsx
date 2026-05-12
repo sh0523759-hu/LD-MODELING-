@@ -11,8 +11,11 @@ const Hero = () => {
     offset: ["start start", "end start"]
   });
 
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacityInfo = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  
+  // Stay visible for longer: only fade out at the very end
+  const opacityInfo = useTransform(scrollYProgress, [0, 0.8, 1], [1, 1, 0]);
+  const scaleTitle = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
 
   return (
     <section ref={containerRef} className="hero-kinetic">
@@ -30,28 +33,32 @@ const Hero = () => {
       </div>
 
       <div className="hero-kinetic-content">
-        <div className="kinetic-container-top">
-          <KineticText text="LD REMODELING" direction="left" />
+        <div className="kinetic-container-top" style={{ opacity: 0.15 }}>
+          <KineticText text="LD REMODELING " direction="left" />
         </div>
         
         <motion.div style={{ opacity: opacityInfo }} className="container hero-main-info-grid">
           <div className="info-col-left">
-            <motion.h1 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="brutalist-title-v2"
+            <motion.div
+              style={{ scale: scaleTitle }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="hero-title-wrapper"
             >
-              WE BUILD <br />
-              <span className="blackletter highlight">The Heat</span>
-            </motion.h1>
+              <h1 className="brutalist-title-v2">
+                WE BUILD <br />
+                <span className="blackletter highlight">The Heat</span>
+              </h1>
+            </motion.div>
           </div>
           
           <div className="info-col-right">
             <div className="info-content-box">
+              <div className="tagline">PREMIER HOME TRANSFORMATION</div>
               <p className="hero-editorial-p">
                 Jacksonville's premier high-energy home transformation studio. 
-                Stripping away the ordinary and building the extraordinary.
+                Stripping away the ordinary and building the extraordinary. 
               </p>
               <div className="hero-cta-row">
                 <MagneticButton>
@@ -70,8 +77,8 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        <div className="kinetic-container-bottom">
-          <KineticText text="JACKSONVILLE FL" direction="right" />
+        <div className="kinetic-container-bottom" style={{ opacity: 0.15 }}>
+          <KineticText text="JACKSONVILLE FL " direction="right" />
         </div>
       </div>
 

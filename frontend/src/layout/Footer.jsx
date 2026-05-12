@@ -3,52 +3,47 @@ import '../styles/Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer-kinetic">
       <div className="container">
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <img src="/LD Remodeling  images/imgi_1_LD-Remodling-1.png" alt="LD Remodeling" className="footer-logo" />
-            <p>
-              Jacksonville's premier home remodeling specialists. We turn your house into the home of your dreams with quality and integrity.
+        <div className="footer-grid-brutalist">
+          <div className="footer-brand-col">
+            <div className="kinetic-logo-footer">
+               <span className="blackletter highlight">LD</span> 
+               <span className="logo-sans">REMODELING</span>
+            </div>
+            <p className="footer-desc">
+              Jacksonville's premier high-energy home transformation studio. 
+              Stripping away the ordinary and building the extraordinary.
             </p>
           </div>
           
-          <div className="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#projects">Our Projects</a></li>
-            </ul>
-          </div>
-          
-          <div className="footer-links">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="#services">Kitchen Remodel</a></li>
-              <li><a href="#services">Bathroom Renovation</a></li>
-              <li><a href="#services">Home Additions</a></li>
-              <li><a href="#services">Flooring & Painting</a></li>
-            </ul>
-          </div>
-          
-          <div className="footer-newsletter">
-            <h4>Stay Connected</h4>
-            <p>Follow us on social media for project updates and inspiration.</p>
-            <div className="social-icons">
-              <a href="#">FB</a>
-              <a href="#">IG</a>
-              <a href="#">LI</a>
+          <div className="footer-nav-col">
+            <div className="link-group">
+              <span className="group-label">Navigate</span>
+              <a href="#about">About</a>
+              <a href="#services">Services</a>
+              <a href="#portfolio">Portfolio</a>
+              <a href="#contact">Contact</a>
             </div>
+            <div className="link-group">
+              <span className="group-label">Connect</span>
+              <a href="#">Instagram</a>
+              <a href="#">Facebook</a>
+              <a href="#">LinkedIn</a>
+            </div>
+          </div>
+
+          <div className="footer-cta-col">
+             <span className="blackletter highlight" style={{ fontSize: '3rem' }}>Join Us</span>
+             <a href="mailto:Ldremodelingjacksonville@gmail.com" className="footer-email-link">Ldremodelingjacksonville@gmail.com</a>
           </div>
         </div>
         
-        <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} LD Remodeling Jacksonville. All Rights Reserved.</p>
-          <div className="footer-legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+        <div className="footer-bottom-row">
+          <p>&copy; {new Date().getFullYear()} LD Remodeling. Built for Impact.</p>
+          <div className="legal-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
           </div>
         </div>
       </div>
