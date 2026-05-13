@@ -4,16 +4,19 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
+  max-width: 100vw;
   background-color: #000000;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
+  max-width: 100vw;
   background-color: #000000;
   color: #ffffff;
-  overflow-x: clip; /* clip prevents gaps but does NOT break sticky/parallax animations */
+  overflow-x: clip; 
 }
 
 /* Custom Luxury Scrollbar */

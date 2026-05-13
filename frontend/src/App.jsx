@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="app-wrapper">
       <Navbar />
-      <main>
+      <main style={{ overflowX: 'clip' }}>
         <Hero />
         <About />
         <ServiceDeck />

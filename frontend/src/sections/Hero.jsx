@@ -46,19 +46,22 @@ const Hero = () => {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="hero-title-wrapper"
             >
-              <h1 className="brutalist-title-v2">
-                WE BUILD <br />
-                <span className="blackletter highlight">The Heat</span>
+              <h1 className="brutalist-title-v2" style={{ 
+                fontSize: "clamp(1.8rem, 7vw, 8rem)", 
+                overflowWrap: "break-word",
+                hyphens: "auto"
+              }}>
+                Let's Build <br />
+                <span className="blackletter highlight">Something</span> <br />
+                Extraordinary
               </h1>
             </motion.div>
           </div>
           
           <div className="info-col-right">
             <div className="info-content-box">
-              <div className="tagline">PREMIER HOME TRANSFORMATION</div>
               <p className="hero-editorial-p">
-                Jacksonville's premier high-energy home transformation studio. 
-                Stripping away the ordinary and building the extraordinary. 
+                Ready to start your home transformation? Contact us today for a free, no-obligation consultation.
               </p>
               <div className="hero-cta-row">
                 <MagneticButton>
