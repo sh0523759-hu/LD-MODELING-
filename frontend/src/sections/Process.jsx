@@ -1,71 +1,52 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ClipboardList, PencilRuler, Hammer, Sparkles } from 'lucide-react';
 import '../styles/Process.css';
 
 const steps = [
   {
-    icon: <ClipboardList size={32} />,
-    title: "Consultation",
-    desc: "We meet with you to discuss your vision, budget, and project requirements."
+    title: "Initial Consultation",
+    desc: "A deep dive into your project ambition, architectural needs, and lifestyle requirements."
   },
   {
-    icon: <PencilRuler size={32} />,
-    title: "Design & Plan",
-    desc: "Our designers create detailed 3D renderings and material selections for approval."
+    title: "Concept & Design",
+    desc: "Meticulous planning with 3D visualizations and curated material palettes for your approval."
   },
   {
-    icon: <Hammer size={32} />,
-    title: "Construction",
-    desc: "Our expert craftsmen bring the design to life with precision and care."
+    title: "Precision Execution",
+    desc: "Our master craftsmen bring the architectural vision to life with uncompromising attention to detail."
   },
   {
-    icon: <Sparkles size={32} />,
-    title: "Final Walkthrough",
-    desc: "We ensure every detail is perfect and hand over your newly transformed space."
+    title: "Final Revelation",
+    desc: "A curated walkthrough of your transformed space, ensuring every finish meets our luxury standard."
   }
 ];
 
 const Process = () => {
   return (
-    <section className="process-section">
+    <section className="process-fancy section-padding">
       <div className="container">
-        <motion.div 
-          className="section-title-wrapper text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <span className="subtitle">How We Work</span>
-          <h2>Our <span className="highlight">Simple</span> Process</h2>
-        </motion.div>
+        <div className="process-header-fancy text-center mb-4">
+          <span className="subtitle-gold">Our Method</span>
+          <h2 className="display-title">The Path to Perfection</h2>
+        </div>
 
-        <div className="process-grid">
+        <div className="fancy-process-list">
           {steps.map((step, index) => (
             <motion.div 
               key={index} 
-              className="process-step-3d"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="fancy-process-item"
+              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ 
-                rotateY: 15, 
-                rotateX: -5,
-                translateZ: 20,
-                scale: 1.05
-              }}
-              style={{ perspective: "1000px" }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
             >
-              <div className="step-card-3d">
-                <div className="icon-wrapper-3d">
-                  {step.icon}
-                  <div className="step-number-3d">{index + 1}</div>
-                </div>
-                <h3>{step.title}</h3>
-                <p>{step.desc}</p>
+              <div className="process-num-col">
+                <span className="process-num">0{index + 1}</span>
               </div>
-              {index < steps.length - 1 && <div className="connector-3d"></div>}
+              <div className="process-text-col">
+                <h3 className="process-step-title">{step.title}</h3>
+                <p className="process-step-desc">{step.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>

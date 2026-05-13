@@ -16,33 +16,32 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
+    { name: 'Philosophy', href: '#about' },
     { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Showcase', href: '#portfolio' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <header className={`header-kinetic ${isScrolled ? 'scrolled' : ''}`}>
-      <nav className="navbar-kinetic">
-        <div className="container nav-container-kinetic">
-          <div className="kinetic-logo">
-            <span className="blackletter highlight">LD</span> 
-            <span className="logo-sans">REMODELING</span>
-            <div style={{ width: '10px', height: '10px', background: 'red', borderRadius: '50%' }}></div>
-          </div>
+    <header className={`header-fancy ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className="navbar-fancy">
+        <div className="container nav-container-fancy">
+          <a href="/" className="fancy-logo">
+            <span className="logo-serif">LD</span> 
+            <span className="logo-main">REMODELING</span>
+          </a>
           
-          <div className="nav-links-kinetic">
+          <div className="nav-links-fancy">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className="nav-item-kinetic">
+              <a key={link.name} href={link.href} className="nav-item-fancy">
                 {link.name}
               </a>
             ))}
-            <a href="#contact" className="btn-kinetic">KICKSTART</a>
+            <a href="#contact" className="nav-btn-fancy">Get Started</a>
           </div>
 
-          <button className="mobile-btn-kinetic" onClick={() => setIsMobileMenuOpen(true)}>
-            <Menu size={30} />
+          <button className="mobile-toggle-fancy" onClick={() => setIsMobileMenuOpen(true)}>
+            <Menu size={24} strokeWidth={1.5} />
           </button>
         </div>
       </nav>
@@ -50,21 +49,30 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
-            className="mobile-overlay-kinetic"
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -100 }}
+            className="fancy-mobile-menu"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
           >
-            <div className="mobile-header-row">
-               <span className="blackletter highlight">LD</span>
-               <button onClick={() => setIsMobileMenuOpen(false)}><X size={40} /></button>
+            <div className="mobile-menu-header">
+               <span className="logo-serif">LD</span>
+               <button className="close-btn" onClick={() => setIsMobileMenuOpen(false)}><X size={30} strokeWidth={1} /></button>
             </div>
-            <div className="mobile-links-column">
-              {navLinks.map((link) => (
-                <a key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
+            <div className="mobile-links-fancy">
+              {navLinks.map((link, index) => (
+                <motion.a 
+                  key={link.name} 
+                  href={link.href} 
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 * index }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   {link.name}
-                </a>
+                </motion.a>
               ))}
+              <a href="#contact" className="mobile-cta-fancy" onClick={() => setIsMobileMenuOpen(false)}>Free Consultation</a>
             </div>
           </motion.div>
         )}

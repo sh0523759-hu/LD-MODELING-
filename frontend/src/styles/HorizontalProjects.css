@@ -1,124 +1,155 @@
-.horizontal-kinetic-root {
-  display: block;
+.portfolio-kinetic-root {
+  background-color: #000;
   position: relative;
-  height: 400vh; /* 4 projects = 400vh scroll depth */
-  background: #000;
+  padding: 0 !important; /* Remove global section padding to allow full-screen sticky */
 }
 
-.horizontal-sticky-box {
-  position: sticky;
-  top: 0;
+.portfolio-sticky-box {
   height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   overflow: hidden;
+  position: sticky;
+  top: 0;
 }
 
-.horizontal-items-row {
+.portfolio-header-floating {
+  position: absolute;
+  top: 2vh; /* Even higher to clear titles */
+  left: 8vw;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.subtitle-gold {
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.display-font {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4rem);
+  color: #fff;
+  line-height: 1.1;
+}
+
+.portfolio-track-kinetic {
   display: flex;
-  width: max-content; /* Dynamic width based on children */
-  z-index: 2;
+  width: fit-content;
+  height: 100%;
+  will-change: transform;
 }
 
-.horizontal-item-card-kinetic {
+.portfolio-kinetic-slide {
   flex-shrink: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 10vw;
+  padding: 12vh 8vw 0 8vw; /* Added top padding to ensure content starts below header */
 }
 
-.project-layout-side {
-  display: flex;
+.portfolio-layout-dual {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6vw;
   align-items: center;
-  gap: 5vw;
   width: 100%;
 }
 
-.item-img-container-side {
-  flex: 1.2;
+.portfolio-img-box {
+  position: relative;
   height: 60vh;
   overflow: hidden;
-  border: 1px solid #222;
+  border: 1px solid var(--border);
 }
 
-.vibrant-img {
+.kinetic-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.item-text-side {
-  flex: 1;
+.kinetic-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.5), transparent);
+}
+
+.kinetic-cat {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.kinetic-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 2.5rem;
+}
+
+.kinetic-p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 400px;
+  margin-bottom: 4rem;
+}
+
+.kinetic-link {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 0.8rem;
+  text-decoration: none;
 }
 
-.item-cat {
-  font-size: 0.8rem;
-  font-weight: 900;
-  letter-spacing: 0.5em;
-  color: var(--primary);
-  margin-bottom: 2rem;
-}
-
-.item-title-massive {
-  font-size: clamp(2rem, 5vw, 6rem);
+.kinetic-link span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
   color: #fff;
-  line-height: 0.9;
-  margin-bottom: 2rem;
+  font-weight: 700;
 }
 
-.item-desc-short {
-  font-size: 1rem;
-  color: var(--text-muted);
-  max-width: 400px;
-  line-height: 1.6;
+.kinetic-line {
+  width: 40px;
+  height: 1px;
+  background: var(--primary);
+  transition: width 0.4s ease;
+}
+
+.kinetic-link:hover .kinetic-line {
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
-  .project-layout-side {
-    flex-direction: column;
-    align-items: flex-start;
+  .portfolio-layout-dual {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
-  .item-img-container-side {
-    width: 100%;
-    height: 40vh;
-  }
-  .item-title-massive {
-    font-size: 3rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .horizontal-item-card-kinetic {
-    padding: 0 5vw;
-  }
-  .item-img-container-side {
+  .portfolio-img-box {
     height: 35vh;
   }
 }
 
-@media (max-width: 480px) {
-  .horizontal-item-card-kinetic {
+@media (max-width: 768px) {
+  .portfolio-kinetic-slide {
     padding: 0 1.5rem;
   }
-  .item-img-container-side {
-    height: 30vh;
-  }
-  .item-title-massive {
-    font-size: clamp(2rem, 10vw, 2.5rem);
-    margin-bottom: 1rem;
-  }
-  .item-cat {
-    margin-bottom: 1rem;
-    font-size: 0.7rem;
-  }
-  .item-desc-short {
-    font-size: 0.9rem;
+  .kinetic-title {
+    font-size: 3rem;
   }
 }

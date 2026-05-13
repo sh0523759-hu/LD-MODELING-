@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useVelocity, useSpring } from 'framer-motion';
+import { motion, useSpring } from 'framer-motion';
 
 const MagneticButton = ({ children, className = "" }) => {
   const ref = useRef(null);

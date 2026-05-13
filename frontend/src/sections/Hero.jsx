@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import KineticText from '../components/KineticText';
 import MagneticButton from '../components/MagneticButton';
 import '../styles/Hero.css';
 
@@ -11,81 +10,92 @@ const Hero = () => {
     offset: ["start start", "end start"]
   });
 
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  
-  // Stay visible for longer: only fade out at the very end
-  const opacityInfo = useTransform(scrollYProgress, [0, 0.8, 1], [1, 1, 0]);
-  const scaleTitle = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.7], [1, 1.05]);
 
   return (
-    <section ref={containerRef} className="hero-kinetic">
-      <div className="haze-top"></div>
-      
-      <div className="hero-bg-container">
-        <motion.div style={{ y: yBg }} className="hero-bg-parallax">
-          <div className="hero-noise"></div>
+    <section ref={containerRef} className="hero-fancy">
+      <div className="hero-bg-wrapper">
+        <motion.div style={{ y: yBg, scale }} className="hero-image-container">
+          <div className="hero-overlay"></div>
           <img 
             src="/LD Remodeling  images/imgi_15_4914-Bramhope-Lane-Ellicott-large-016-024-Kitchen-1500x1000-72dpi.jpg" 
-            alt="Luxury" 
-            className="hero-background-image"
+            alt="Luxury Kitchen" 
+            className="hero-img"
           />
         </motion.div>
       </div>
 
-      <div className="hero-kinetic-content">
-        <div className="kinetic-container-top" style={{ opacity: 0.15 }}>
-          <KineticText text="LD REMODELING " direction="left" />
-        </div>
-        
-        <motion.div style={{ opacity: opacityInfo }} className="container hero-main-info-grid">
-          <div className="info-col-left">
-            <motion.div
-              style={{ scale: scaleTitle }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="hero-title-wrapper"
+      <motion.div style={{ opacity }} className="container hero-content-center">
+        <div className="hero-text-block">
+          <div className="mask-overflow">
+            <motion.span 
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+              className="hero-subtitle"
             >
-              <h1 className="brutalist-title-v2" style={{ 
-                fontSize: "clamp(1.8rem, 7vw, 8rem)", 
-                overflowWrap: "break-word",
-                hyphens: "auto"
-              }}>
-                Let's Build <br />
-                <span className="blackletter highlight">Something</span> <br />
-                Extraordinary
-              </h1>
-            </motion.div>
+              Jacksonville's Premier Transformation Studio
+            </motion.span>
           </div>
           
-          <div className="info-col-right">
-            <div className="info-content-box">
-              <p className="hero-editorial-p">
-                Ready to start your home transformation? Contact us today for a free, no-obligation consultation.
-              </p>
-              <div className="hero-cta-row">
-                <MagneticButton>
-                  <a href="#contact" className="btn btn-primary">Start a Project</a>
-                </MagneticButton>
-                <div className="scroll-reveal-indicator">
-                  <motion.div 
-                    animate={{ y: [0, 15, 0] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className="dot-indicator"
-                  ></motion.div>
-                  <span>Glide Down</span>
-                </div>
-              </div>
+          <h1 className="hero-main-title">
+            <div className="mask-overflow">
+              <motion.span 
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+                style={{ display: 'block' }}
+              >
+                Let's Build Something
+              </motion.span>
             </div>
+            <div className="mask-overflow">
+              <motion.span 
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                style={{ display: 'block' }}
+              >
+                <span className="highlight">Extraordinary</span> Together
+              </motion.span>
+            </div>
+          </h1>
+
+          <div className="mask-overflow">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="hero-p"
+            >
+              Ready to start your home transformation? Contact us today for a free, <br /> 
+              no-obligation consultation and bring your vision to life.
+            </motion.p>
           </div>
-        </motion.div>
 
-        <div className="kinetic-container-bottom" style={{ opacity: 0.15 }}>
-          <KineticText text="JACKSONVILLE FL " direction="right" />
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="hero-actions"
+          >
+            <MagneticButton>
+              <a href="#services" className="btn btn-primary">Choose Your Service</a>
+            </MagneticButton>
+            <a href="#contact" className="btn btn-outline">Start Consultation</a>
+          </motion.div>
         </div>
-      </div>
 
-      <div className="haze-bottom"></div>
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="hero-scroll-tag"
+        >
+          <span>Scroll to Discover</span>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

@@ -1,163 +1,160 @@
-.header-kinetic {
+.header-fancy {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 3000;
-  padding: 2rem 0;
-  transition: var(--transition);
+  z-index: 1000;
+  padding: 2.5rem 0;
+  transition: all 0.4s ease;
 }
 
-.header-kinetic.scrolled {
-  padding: 1rem 0;
-  background: rgba(0, 0, 0, 0.9);
+.header-fancy.scrolled {
+  padding: 1.2rem 0;
+  background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(15px);
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.navbar-kinetic {
+.navbar-fancy {
   width: 100%;
 }
 
-.nav-container-kinetic {
+.nav-container-fancy {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 4rem;
 }
 
-.kinetic-logo {
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: #fff;
+.fancy-logo {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  letter-spacing: -0.05em;
+  gap: 1.2rem;
+  text-decoration: none;
 }
 
-.kinetic-logo .blackletter {
-  font-size: 3rem;
+.logo-serif {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
   color: var(--primary);
+  line-height: 1;
 }
 
-.logo-sans {
-  margin-top: 5px;
+.logo-divider {
+  width: 1px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.2);
 }
 
-.nav-links-kinetic {
+.logo-main {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: #fff;
+}
+
+.nav-links-fancy {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 3.5rem;
 }
 
-.nav-item-kinetic {
+.nav-item-fancy {
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-weight: 800;
+  letter-spacing: 0.2em;
+  font-weight: 600;
   color: #fff;
-  opacity: 0.6;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
 
-.nav-item-kinetic:hover {
+.nav-item-fancy:hover {
   opacity: 1;
   color: var(--primary);
 }
 
-.btn-kinetic {
-  padding: 0.75rem 2rem;
-  border: 1px solid #fff;
-  font-size: 0.7rem;
-  font-weight: 900;
+.nav-btn-fancy {
+  font-size: 0.65rem;
+  text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: #fff;
+  font-weight: 800;
+  color: #000;
+  background: #fff;
+  padding: 0.8rem 1.8rem;
+  transition: var(--transition);
 }
 
-.btn-kinetic:hover {
-  background: #fff;
+.nav-btn-fancy:hover {
+  background: var(--primary);
   color: #000;
 }
 
-.mobile-btn-kinetic {
+.mobile-toggle-fancy {
   display: none;
   background: none;
   border: none;
   color: #fff;
-  padding: 0.5rem;
+  cursor: pointer;
 }
 
-.mobile-overlay-kinetic {
+/* Mobile Menu Fancy */
+.fancy-mobile-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: #000;
-  padding: 4rem 2rem;
+  inset: 0;
+  background: #0a0a0a;
+  z-index: 2000;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
-  z-index: 4000;
 }
 
-.mobile-header-row {
+.mobile-menu-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 5rem;
 }
 
-.mobile-links-column {
+.mobile-links-fancy {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
-.mobile-links-column a {
-  font-size: 1.8rem;
-  font-weight: 900;
-  text-transform: uppercase;
+.mobile-links-fancy a {
+  font-family: var(--font-display);
+  font-size: 3rem;
   color: #fff;
+  text-decoration: none;
+}
+
+.mobile-cta-fancy {
+  margin-top: 3rem;
+  font-family: var(--font-main) !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--primary) !important;
+  font-weight: 800;
 }
 
 @media (max-width: 1024px) {
-  .nav-links-kinetic {
+  .nav-links-fancy {
     display: none;
   }
-  .mobile-btn-kinetic {
+  .mobile-toggle-fancy {
     display: block;
-    padding: 0.5rem;
   }
-  .mobile-btn-kinetic svg {
-    width: 28px;
-    height: 28px;
-  }
-  .nav-container-kinetic {
-    padding: 0 1.5rem;
-  }
-  .kinetic-logo {
-    font-size: 1.2rem;
-  }
-  .kinetic-logo .blackletter {
-    font-size: 2.2rem;
+  .header-fancy {
+    padding: 1.5rem 0;
   }
 }
 
-@media (max-width: 600px) {
-  .header-kinetic {
-    padding: 1rem 0;
+@media (max-width: 480px) {
+  .logo-main {
+    display: none;
   }
-  .kinetic-logo {
-    font-size: 1rem;
-    gap: 0.4rem;
-  }
-  .kinetic-logo .blackletter {
-    font-size: 1.8rem;
-  }
-  .mobile-btn-kinetic svg {
-    width: 24px;
-    height: 24px;
+  .logo-divider {
+    display: none;
   }
 }

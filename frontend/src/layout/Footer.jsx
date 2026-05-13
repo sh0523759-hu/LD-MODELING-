@@ -3,47 +3,46 @@ import '../styles/Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer-kinetic">
+    <footer className="footer-fancy">
       <div className="container">
-        <div className="footer-grid-brutalist">
-          <div className="footer-brand-col">
-            <div className="kinetic-logo-footer">
-               <span className="blackletter highlight">LD</span> 
-               <span className="logo-sans">REMODELING</span>
+        <div className="footer-grid-fancy">
+          <div className="footer-brand-fancy">
+            <div className="fancy-logo-footer">
+              <span className="logo-serif">LD</span> 
+              <span className="logo-main-footer">REMODELING</span>
             </div>
-            <p className="footer-desc">
-              Jacksonville's premier high-energy home transformation studio. 
-              Stripping away the ordinary and building the extraordinary.
+            <p className="footer-p-fancy">
+              A premier high-energy home transformation studio. We engineer extraordinary living spaces through architectural precision and luxury design.
             </p>
           </div>
           
-          <div className="footer-nav-col">
-            <div className="link-group">
-              <span className="group-label">Navigate</span>
-              <a href="#about">About</a>
+          <div className="footer-links-fancy">
+            <div className="fancy-link-group">
+              <span className="fancy-group-label">Navigation</span>
+              <a href="#about">Philosophy</a>
               <a href="#services">Services</a>
-              <a href="#portfolio">Portfolio</a>
+              <a href="#portfolio">Showcase</a>
               <a href="#contact">Contact</a>
             </div>
-            <div className="link-group">
-              <span className="group-label">Connect</span>
+            <div className="fancy-link-group">
+              <span className="fancy-group-label">Socials</span>
               <a href="#">Instagram</a>
               <a href="#">Facebook</a>
-              <a href="#">LinkedIn</a>
+              <a href="#">Houzz</a>
             </div>
           </div>
 
-          <div className="footer-cta-col">
-             <span className="blackletter highlight" style={{ fontSize: '3rem' }}>Join Us</span>
-             <a href="mailto:Ldremodelingjacksonville@gmail.com" className="footer-email-link">Ldremodelingjacksonville@gmail.com</a>
+          <div className="footer-contact-fancy">
+             <span className="subtitle-gold">Start a Conversation</span>
+             <a href="mailto:Ldremodelingjacksonville@gmail.com" className="fancy-footer-email">Ldremodelingjacksonville@gmail.com</a>
+             <span className="fancy-footer-tel">(904) 299-4364</span>
           </div>
         </div>
         
-        <div className="footer-bottom-row">
-          <p>&copy; {new Date().getFullYear()} LD Remodeling. Built for Impact.</p>
-          <div className="legal-links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
+        <div className="footer-bottom-fancy">
+          <p>&copy; {new Date().getFullYear()} LD Remodeling. All Rights Reserved.</p>
+          <div className="fancy-legal-links">
+            <span>Privately Owned & Operated in Jacksonville, FL</span>
           </div>
         </div>
       </div>

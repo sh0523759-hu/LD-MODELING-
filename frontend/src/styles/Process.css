@@ -1,122 +1,66 @@
-.process-section {
-  padding: 120px 0;
-  background: #0a0a0a; /* Dark Background */
-  color: white;
+.process-fancy {
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/LD Remodeling  images/imgi_58_Full-View-of-Whole-Floor-Remodel-_-Compelling-Homes.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-.process-grid {
+.fancy-process-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 6rem auto 0;
+}
+
+.fancy-process-item {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  margin-top: 80px;
-  position: relative;
-}
-
-.process-step-3d {
-  position: relative;
-  z-index: 2;
-  transform-style: preserve-3d;
-}
-
-.step-card-3d {
-  background: #151515;
-  padding: 40px 30px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  transition: box-shadow 0.3s ease;
-  height: 100%;
+  grid-template-columns: 120px 1fr;
+  gap: 4rem;
+  padding: 3rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 2rem;
+  transition: var(--transition);
 }
 
-.process-step-3d:hover .step-card-3d {
-  box-shadow: 0 40px 80px rgba(182, 145, 82, 0.1);
-  border-color: rgba(182, 145, 82, 0.3);
+.fancy-process-item:hover {
+  background: rgba(0, 0, 0, 0.85);
+  border-color: var(--primary);
+  transform: translateY(-10px);
 }
 
-.icon-wrapper-3d {
-  width: 80px;
-  height: 80px;
-  background: rgba(182, 145, 82, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 30px;
+.process-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
   color: var(--primary);
-  position: relative;
-  transform: translateZ(30px); /* 3D effect */
+  line-height: 1;
+  opacity: 0.5;
 }
 
-.step-number-3d {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 30px;
-  height: 30px;
-  background: var(--primary);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 0.8rem;
-  border: 3px solid white;
+.process-step-title {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 1rem;
 }
 
-.process-section h2 {
-  color: #ffffff;
-}
-
-.process-step-3d h3 {
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-  font-weight: 700;
-  transform: translateZ(20px);
-  color: #ffffff;
-}
-
-.process-step-3d p {
-  color: rgba(255, 255, 255, 0.9); /* Increased opacity */
-  font-size: 0.95rem;
-  line-height: 1.6;
-  transform: translateZ(10px);
-}
-
-.connector-3d {
-  position: absolute;
-  top: 50%;
-  left: calc(100% - 20px);
-  width: 40px;
-  height: 2px;
-  background: repeating-linear-gradient(to right, var(--primary) 0, var(--primary) 10px, transparent 10px, transparent 20px);
-  opacity: 0.2;
-  z-index: 1;
-}
-
-@media (max-width: 1024px) {
-  .process-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-  }
-  .connector-3d {
-    display: none;
-  }
+.process-step-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
 }
 
 @media (max-width: 768px) {
-  .process-section {
-    padding: 80px 0;
-  }
-  .process-grid {
+  .fancy-process-item {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 1.5rem;
+    padding: 2.5rem 2rem;
   }
-  .process-step-3d {
-    padding: 40px 30px;
-  }
-  .process-section h2 {
+  .process-num {
     font-size: 2.2rem;
+  }
+  .process-step-title {
+    font-size: 1.5rem;
   }
 }

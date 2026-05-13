@@ -1,74 +1,105 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import ScrollReveal from '../components/ScrollReveal';
-import KineticText from '../components/KineticText';
 import MagneticButton from '../components/MagneticButton';
 import '../styles/About.css';
 
-const About = () => {
+const Counter = ({ value, suffix }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const motionValue = useSpring(0, { stiffness: 50, damping: 20 });
+  const displayValue = useTransform(motionValue, (latest) => Math.round(latest));
+
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(value);
+    } else {
+      motionValue.set(0);
+    }
+  }, [isInView, value, motionValue]);
+
   return (
-    <section id="about" className="about-brutalist section-padding">
-      <div className="haze-top"></div>
-      
+    <span ref={ref}>
+      <motion.span>{displayValue}</motion.span>{suffix}
+    </span>
+  );
+};
+
+const About = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
+
+  return (
+    <section ref={sectionRef} id="about" className="about-fancy section-padding">
       <div className="container">
-        <div className="brutalist-grid-refined">
-          <div className="grid-left-col">
+        <div className="about-grid-fancy">
+          <motion.div style={{ y: textY }} className="about-text-content">
             <ScrollReveal direction="left">
-              <span className="blackletter highlight" style={{ fontSize: "2rem" }}>Integrity</span>
-              <h2 className="brutalist-heading-v2">
-                WE GUT <br />
-                ORDINARY <br />
-                <span className="hollow-text">HOMES</span>
+              <span className="subtitle-gold">Our Philosophy</span>
+              <h2 className="about-title-fancy">
+                Elevating the <span className="highlight">Standard</span> of <br />
+                Residential Excellence
               </h2>
             </ScrollReveal>
             
-            <div className="brutalist-info-divider">
+            <div className="about-details-fancy">
               <ScrollReveal delay={0.3}>
-                <p className="brutalist-editorial-p">
-                  LD Remodeling isn't just a construction company. We are a high-energy 
-                  design studio dedicated to stripping away the mundane and building 
-                  the extraordinary. Our work is precise, our impact is massive.
+                <p className="about-p-fancy">
+                  LD Remodeling is a premier high-energy transformation studio. 
+                  We specialize in stripping away the mundane and engineering 
+                  extraordinary living spaces through uncompromising precision 
+                  and refined architectural design.
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={0.5}>
-                <div className="brutalist-cta-box">
+                <div className="about-btn-row">
                   <MagneticButton>
-                    <a href="#portfolio" className="btn btn-outline">Our History</a>
+                    <a href="#portfolio" className="btn btn-outline">View Portfolio</a>
                   </MagneticButton>
                 </div>
               </ScrollReveal>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="grid-right-col">
+          <div className="about-visual-content">
             <ScrollReveal direction="right" delay={0.4}>
-              <div className="brutalist-frame">
-                <img src="/LD Remodeling  images/imgi_11_portf10-copyright.jpg" alt="Impact" className="brutalist-main-img" />
-                <div className="frame-overlay-text">
-                  <span className="since">EST 2010</span>
+              <div className="fancy-image-frame">
+                <motion.img 
+                  style={{ y: imgY, scale: 1.1 }}
+                  src="/LD Remodeling  images/imgi_11_portf10-copyright.jpg" 
+                  alt="Luxury Interior" 
+                  className="fancy-about-img" 
+                />
+                <div className="frame-tag-gold">
+                  <span>EST. 2010</span>
                 </div>
               </div>
             </ScrollReveal>
             
-            <div className="stats-brutalist-row">
-              <div className="stat-unit">
-                <span className="unit-num">15</span>
-                <span className="unit-label">YEARS</span>
+            <div className="fancy-stats-row">
+              <div className="fancy-stat">
+                <span className="stat-value">
+                  <Counter value={15} suffix="+" />
+                </span>
+                <span className="stat-name">Years Exp</span>
               </div>
-              <div className="stat-unit">
-                <span className="unit-num">500+</span>
-                <span className="unit-label">PROJECTS</span>
+              <div className="fancy-stat">
+                <span className="stat-value">
+                  <Counter value={500} suffix="+" />
+                </span>
+                <span className="stat-name">Homes Built</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="about-parallax-text">
-        <KineticText text="UNCOMPROMISING PRECISION " direction="right" />
-      </div>
-
-      <div className="haze-bottom"></div>
     </section>
   );
 };

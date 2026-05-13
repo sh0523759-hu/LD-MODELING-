@@ -1,64 +1,56 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import MagneticButton from '../components/MagneticButton';
 import '../styles/ServiceDeck.css';
 
 const services = [
   {
     id: "01",
-    title: "Master Kitchens",
-    desc: "We engineer culinary spaces that blend industrial precision with residential luxury. Every joint, every finish, every detail is built for impact.",
-    img: "/LD Remodeling  images/imgi_11_portf10-copyright.jpg"
+    title: "Gourmet Kitchens",
+    desc: "The heart of your home, re-engineered for performance and elegance. We specialize in high-end culinary environments that combine industrial precision with residential luxury.",
+    img: "/LD Remodeling  images/imgi_11_portf10-copyright.jpg",
+    features: ["Custom Cabinetry", "Stone Countertops", "High-End Appliances"]
   },
   {
     id: "02",
-    title: "Sanctuary Baths",
-    desc: "Transforming utility into an experience. Our bathrooms are curated retreats featuring high-contrast materials and avant-garde fixtures.",
-    img: "/LD Remodeling  images/imgi_13_portf14-copyright-890x664-1.jpg"
+    title: "Spa-Grade Bathrooms",
+    desc: "Personal sanctuaries that blend modern utility with timeless luxury. High-contrast materials and avant-garde fixtures for your private retreat.",
+    img: "/LD Remodeling  images/imgi_13_portf14-copyright-890x664-1.jpg",
+    features: ["Smart Showers", "Free-standing Tubs", "Custom Vanities"]
   },
   {
     id: "03",
-    title: "Full Overhauls",
-    desc: "Complete residential transformations. We gut the ordinary and build the extraordinary, creating high-energy environments for modern life.",
-    img: "/LD Remodeling  images/imgi_12_our_renovations_full_01.jpg"
+    title: "Full Home Overhauls",
+    desc: "Complete architectural transformations. We strip away the ordinary and build your dream home from the studs up with uncompromising quality.",
+    img: "/LD Remodeling  images/imgi_12_our_renovations_full_01.jpg",
+    features: ["Structural Changes", "New Layouts", "Interior Architecture"]
   }
 ];
 
 const ServiceCard = ({ service, index }) => {
-  const container = React.useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start end', 'start start']
-  })
-
-  // Fade in and scale up as it comes into view
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
-
   return (
     <motion.div 
-      ref={container}
-      style={{ 
-        opacity, 
-        scale,
-        top: `calc(10vh + ${index * 30}px)`, /* Offset each card slightly to see the stack */
-        zIndex: index + 1
-      }} 
-      className="service-card"
+      className="sticky-card-fancy"
+      style={{ top: `calc(8vh + ${index * 25}px)` }}
     >
-      <div className="card-left">
-        <span className="card-number">{service.id}</span>
-        <h3 className="card-title">{service.title}</h3>
-        <p className="card-desc">{service.desc}</p>
-        <div className="card-footer">
-          <a href="#contact" className="card-link-magnetic">Request Consultation</a>
+      <div className="card-inner-fancy">
+        <div className="card-left-fancy">
+          <span className="card-id-fancy">{service.id}</span>
+          <h3 className="card-title-fancy">{service.title}</h3>
+          <p className="card-desc-fancy">{service.desc}</p>
+          <ul className="card-features-fancy">
+            {service.features.map((f, i) => <li key={i}>{f}</li>)}
+          </ul>
+          <div className="card-action-fancy">
+            <MagneticButton>
+              <a href="#contact" className="btn btn-primary small-btn">Choose Service</a>
+            </MagneticButton>
+          </div>
         </div>
-      </div>
-      <div className="card-right">
-        <img 
-          src={service.img} 
-          alt={service.title} 
-          className="card-img" 
-        />
+        <div className="card-right-fancy">
+          <img src={service.img} alt={service.title} className="card-img-fancy" />
+          <div className="card-img-overlay"></div>
+        </div>
       </div>
     </motion.div>
   );
@@ -66,27 +58,24 @@ const ServiceCard = ({ service, index }) => {
 
 const ServiceDeck = () => {
   return (
-    <div className="service-deck-root">
-      <div className="container deck-intro-aligned">
-        <div className="title-stack">
-          <span className="blackletter highlight">The Masterlist</span>
-          <h2 className="deck-main-title">CORE SERVICES</h2>
+    <section className="service-deck-kinetic section-padding">
+      <div className="container">
+        <div className="deck-header-fancy text-center mb-4">
+          <span className="subtitle-gold">Tailored Solutions</span>
+          <h2 className="display-title">Select Your Transformation</h2>
+          <p className="deck-intro-p">
+            Choose the service that fits your vision. Our craftsmen handle <br />
+            every detail with uncompromising precision.
+          </p>
         </div>
-        <div className="intro-text-side">
-          <p>Uncompromising craftsmanship. Modular precision. <br /> Built for those who demand more from their space.</p>
-        </div>
-      </div>
 
-      <div className="cards-wrapper">
-        {services.map((service, index) => (
-          <ServiceCard 
-            key={service.id} 
-            service={service} 
-            index={index} 
-          />
-        ))}
+        <div className="sticky-cards-stack">
+          {services.map((service, index) => (
+            <ServiceCard key={service.id} service={service} index={index} />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

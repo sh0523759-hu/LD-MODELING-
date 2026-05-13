@@ -1,64 +1,57 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Star, Quote } from 'lucide-react';
+import { Quote } from 'lucide-react';
 import '../styles/Testimonials.css';
 
 const reviews = [
   {
     name: "Sarah Johnson",
-    role: "Homeowner",
-    text: "LD Remodeling completely transformed our kitchen. The attention to detail and craftsmanship is unparalleled. We couldn't be happier!",
-    rating: 5
+    role: "Riverside Estate",
+    text: "LD Remodeling completely transformed our kitchen. The attention to detail and craftsmanship is unparalleled. We couldn't be happier with the results!",
   },
   {
     name: "Michael Chen",
-    role: "Property Investor",
+    role: "San Marco Penthouse",
     text: "Professional, timely, and high-quality work. They handled our full home renovation with ease and kept us informed every step of the way.",
-    rating: 5
   },
   {
     name: "Emily Davis",
     role: "Interior Designer",
-    text: "As a designer, I'm very picky about execution. LD Remodeling exceeded my expectations on every level. Truly Jacksonville's best.",
-    rating: 5
+    text: "As a designer, I'm very picky about execution. LD Remodeling exceeded my expectations on every level. Truly Jacksonville's best team.",
   }
 ];
 
 const Testimonials = () => {
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-fancy section-padding">
       <div className="container">
         <motion.div 
-          className="section-title-wrapper text-center"
-          initial={{ opacity: 0, y: 30 }}
+          className="fancy-testimonials-header text-center mb-4"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="subtitle">Client Success</span>
-          <h2>What Our <span className="highlight">Clients</span> Say</h2>
+          <span className="subtitle-gold">Client Experience</span>
+          <h2 className="display-title">Kind Words From Our Clients</h2>
         </motion.div>
 
-        <div className="testimonials-grid">
+        <div className="fancy-testimonials-grid">
           {reviews.map((review, index) => (
             <motion.div 
               key={index} 
-              className="testimonial-card"
-              initial={{ opacity: 0, y: 50 }}
+              className="fancy-testimonial-card"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              whileHover={{ y: -10 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
             >
-              <div className="quote-icon"><Quote size={40} /></div>
-              <div className="rating">
-                {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} size={16} fill="currentColor" />
-                ))}
-              </div>
-              <p>"{review.text}"</p>
-              <div className="author">
-                <h4>{review.name}</h4>
-                <span>{review.role}</span>
+              <div className="fancy-quote-top"><Quote size={30} strokeWidth={1} /></div>
+              <p className="fancy-testimonial-text">"{review.text}"</p>
+              <div className="fancy-testimonial-author">
+                <div className="author-info">
+                  <h4 className="author-name">{review.name}</h4>
+                  <span className="author-role">{review.role}</span>
+                </div>
               </div>
             </motion.div>
           ))}
