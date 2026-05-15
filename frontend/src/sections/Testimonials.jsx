@@ -1,59 +1,83 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Quote } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/Testimonials.css';
 
 const reviews = [
   {
-    name: "Sarah Johnson",
-    role: "Riverside Estate",
-    text: "LD Remodeling completely transformed our kitchen. The attention to detail and craftsmanship is unparalleled. We couldn't be happier with the results!",
+    text: "LD Remodeling transformed our outdated kitchen into a modern masterpiece. The attention to detail was incredible and they finished ahead of schedule.",
+    highlight: "kitchen",
+    name: "SARAH M.",
+    location: "ARLINGTON, FL"
   },
   {
-    name: "Michael Chen",
-    role: "San Marco Penthouse",
-    text: "Professional, timely, and high-quality work. They handled our full home renovation with ease and kept us informed every step of the way.",
+    text: "From the first consultation to the final reveal, their team was professional, clean, and genuinely cared about quality. Best contractors in Jacksonville.",
+    highlight: "contractors",
+    name: "MICHAEL T.",
+    location: "JACKSONVILLE BEACH, FL"
   },
   {
-    name: "Emily Davis",
-    role: "Interior Designer",
-    text: "As a designer, I'm very picky about execution. LD Remodeling exceeded my expectations on every level. Truly Jacksonville's best team.",
+    text: "Fixed price. On-time delivery. No surprises. That's what you get with LD Remodeling.",
+    highlight: "Fixed price",
+    name: "JENNIFER L.",
+    location: "PONTE VEDRA, FL"
   }
 ];
 
 const Testimonials = () => {
-  return (
-    <section className="testimonials-fancy section-padding">
-      <div className="container">
-        <motion.div 
-          className="fancy-testimonials-header text-center mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <span className="subtitle-gold">Client Experience</span>
-          <h2 className="display-title">Kind Words From Our Clients</h2>
-        </motion.div>
+  const [activeIndex, setActiveIndex] = useState(0);
 
-        <div className="fancy-testimonials-grid">
-          {reviews.map((review, index) => (
-            <motion.div 
-              key={index} 
-              className="fancy-testimonial-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-            >
-              <div className="fancy-quote-top"><Quote size={30} strokeWidth={1} /></div>
-              <p className="fancy-testimonial-text">"{review.text}"</p>
-              <div className="fancy-testimonial-author">
-                <div className="author-info">
-                  <h4 className="author-name">{review.name}</h4>
-                  <span className="author-role">{review.role}</span>
-                </div>
-              </div>
-            </motion.div>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex(prev => (prev + 1) % reviews.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const review = reviews[activeIndex];
+
+  // Highlight the keyword in gold italic
+  const renderText = (text, highlight) => {
+    const idx = text.indexOf(highlight);
+    if (idx === -1) return `"${text}"`;
+    return (
+      <>
+        "{text.substring(0, idx)}
+        <span className="tb-quote-highlight">{highlight}</span>
+        {text.substring(idx + highlight.length)}"
+      </>
+    );
+  };
+
+  return (
+    <section className="tb-quotes-section">
+      <div className="container">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeIndex}
+            className="tb-quote-block"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="tb-quote-marks">"</div>
+            <p className="tb-quote-text">
+              {renderText(review.text, review.highlight)}
+            </p>
+            <span className="tb-quote-author">
+              — {review.name} / {review.location}
+            </span>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Dots */}
+        <div className="tb-quote-dots">
+          {reviews.map((_, i) => (
+            <button
+              key={i}
+              className={`tb-quote-dot ${i === activeIndex ? 'active' : ''}`}
+              onClick={() => setActiveIndex(i)}
+            />
           ))}
         </div>
       </div>

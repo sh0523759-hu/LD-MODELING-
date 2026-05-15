@@ -1,0 +1,59 @@
+/* ===== VIDEO TESTIMONIAL ===== */
+.tb-video-section {
+  background: var(--void);
+  padding: 6rem 0 8rem;
+}
+
+.tb-video-box {
+  max-width: 500px;
+  margin: 0 auto 5rem;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+}
+
+.tb-video-player {
+  width: 100%;
+  display: block;
+  aspect-ratio: 3 / 4;
+  min-height: 650px;
+  object-fit: cover;
+  background: #000;
+}
+
+/* Quote */
+.tb-video-quote-section {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tb-video-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--bone);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.tb-video-author {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--concrete);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .tb-video-section {
+    padding: 4rem 0 5rem;
+  }
+
+  .tb-video-box {
+    margin-bottom: 2.5rem;
+  }
+}

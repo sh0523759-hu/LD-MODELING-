@@ -1,0 +1,97 @@
+/* ===== DISCIPLINES SECTION ===== */
+.tb-disciplines {
+  background: var(--void);
+  padding: 10rem 0 6rem;
+}
+
+.tb-disciplines-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.tb-disciplines-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-bottom: 4rem;
+}
+
+.tb-disc-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tb-disc-left {
+  align-items: flex-start;
+  padding-top: 4rem;
+}
+
+.tb-disc-right {
+  align-items: flex-end;
+  padding-top: 0;
+}
+
+.tb-disc-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  transition: color 0.4s var(--ease-out);
+}
+
+.tb-disc-name {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  text-transform: uppercase;
+  transition: color 0.4s var(--ease-out);
+}
+
+.tb-disc-dot {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  color: var(--gold);
+  line-height: 1.1;
+}
+
+.tb-disc-link:hover .tb-disc-name {
+  color: var(--gold);
+}
+
+/* Tagline */
+.tb-disciplines-tagline {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--bone);
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .tb-disciplines {
+    padding: 6rem 0 4rem;
+  }
+
+  .tb-disciplines-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .tb-disc-left,
+  .tb-disc-right {
+    align-items: flex-start;
+    padding-top: 0;
+  }
+
+  .tb-disc-name,
+  .tb-disc-dot {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+}

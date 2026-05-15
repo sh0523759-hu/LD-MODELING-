@@ -1,121 +1,119 @@
-.hero-fancy {
+/* ===== TB HERO — BUILT WITHOUT COMPROMISE ===== */
+.tb-hero {
   position: relative;
-  height: 120vh; /* Extra height for parallax */
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #000;
+  height: 100vh;
+  min-height: 700px;
   overflow: hidden;
 }
 
-.mask-overflow {
-  overflow: hidden;
-  display: block;
-}
-
-.hero-bg-wrapper {
+.tb-hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-.hero-image-container {
+.tb-hero-img-wrap {
   width: 100%;
-  height: 100%;
+  height: 120%;
   position: relative;
 }
 
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.5;
-}
-
-.hero-overlay {
+.tb-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 40%, rgba(0,0,0,0.8) 100%);
+  background: rgba(13, 13, 13, 0.65);
   z-index: 1;
 }
 
-.hero-content-center {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-}
-
-.hero-subtitle {
+.tb-hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.4em;
-  color: var(--primary);
-  margin-bottom: 2rem;
-  font-weight: 700;
 }
 
-.hero-main-title {
-  font-size: clamp(3.5rem, 8vw, 10rem);
-  color: #fff;
-  line-height: 1;
-  margin-bottom: 2.5rem;
-}
-
-.hero-p {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  max-width: 800px;
-  margin: 0 auto 4rem;
-  line-height: 1.8;
-}
-
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-
-.hero-scroll-tag {
+/* Hero Content — centered massive text */
+.tb-hero-content {
   position: absolute;
-  bottom: 4rem;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tb-hero-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tb-hero-line {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(4rem, 12vw, 11rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  text-transform: uppercase;
+  display: block;
+}
+
+.tb-hero-line-last {
+  /* COMPROMISE is the widest word */
+}
+
+.tb-gold-dot {
+  color: var(--gold);
+}
+
+/* Bottom area */
+.tb-hero-bottom {
+  position: absolute;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  padding-bottom: 1.5rem;
 }
 
-.hero-scroll-tag span {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: var(--text-muted);
-}
-
-.scroll-line {
+.tb-hero-scroll-line {
   width: 1px;
   height: 60px;
-  background: linear-gradient(to bottom, var(--primary), transparent);
+  background: var(--gold);
+  transform-origin: top;
 }
 
+.tb-hero-tag {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  color: var(--concrete);
+  text-transform: uppercase;
+}
+
+/* Mobile */
 @media (max-width: 768px) {
-  .hero-main-title {
-    font-size: 3rem;
+  .tb-hero {
+    min-height: 100svh;
   }
-  .hero-actions {
-    flex-direction: column;
-    gap: 1rem;
+
+  .tb-hero-line {
+    font-size: clamp(2.5rem, 14vw, 5rem);
   }
-  .hero-actions .btn {
-    width: 100%;
-    max-width: 300px;
+
+  .tb-hero-scroll-line {
+    height: 40px;
   }
-  .hero-p {
-    font-size: 1rem;
-    padding: 0 1rem;
+
+  .tb-hero-tag {
+    font-size: 0.45rem;
   }
 }

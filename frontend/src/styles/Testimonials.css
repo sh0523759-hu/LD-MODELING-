@@ -1,71 +1,85 @@
-.testimonials-fancy {
-  background-color: #0a0a0a;
-}
-
-.fancy-testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-  margin-top: 5rem;
-}
-
-.fancy-testimonial-card {
-  background: #111;
-  padding: 4rem 3rem;
-  border: 1px solid var(--border);
+/* ===== TB TESTIMONIALS — Large Centered Quotes ===== */
+.tb-quotes-section {
+  background: var(--void);
+  padding: 10rem 0;
+  min-height: 70vh;
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  align-items: center;
 }
 
-.fancy-quote-top {
-  color: var(--primary);
+.tb-quote-block {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tb-quote-marks {
+  font-family: var(--font-serif);
+  font-size: 8rem;
+  color: rgba(197, 160, 89, 0.2);
+  line-height: 0.3;
   margin-bottom: 2rem;
 }
 
-.fancy-testimonial-text {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  color: #fff;
-  line-height: 1.6;
+.tb-quote-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
   font-style: italic;
-  margin-bottom: 3rem;
-  flex: 1;
+  font-weight: 400;
+  color: var(--bone);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
 }
 
-.fancy-testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
+.tb-quote-highlight {
+  color: var(--gold);
+  font-style: italic;
 }
 
-.author-name {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 0.2rem;
-}
-
-.author-role {
-  font-size: 0.7rem;
+.tb-quote-author {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--concrete);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--primary);
 }
 
-@media (max-width: 1024px) {
-  .fancy-testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Dots */
+.tb-quote-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 3rem;
+}
+
+.tb-quote-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--concrete);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+}
+
+.tb-quote-dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
 }
 
 @media (max-width: 768px) {
-  .fancy-testimonials-grid {
-    grid-template-columns: 1fr;
+  .tb-quotes-section {
+    padding: 6rem 0;
+    min-height: auto;
   }
-  .fancy-testimonial-text {
-    font-size: 1.2rem;
+
+  .tb-quote-marks {
+    font-size: 5rem;
+  }
+
+  .tb-quote-text {
+    font-size: 1.1rem;
   }
 }

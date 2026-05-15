@@ -1,93 +1,99 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import MagneticButton from '../components/MagneticButton';
 import '../styles/Contact.css';
 
 const Contact = () => {
   return (
-    <section id="contact" className="contact-fancy section-padding">
+    <section id="contact" className="tb-contact section-padding">
       <div className="container">
-        <div className="contact-grid-fancy">
-          <div className="contact-info-fancy">
+        <div className="tb-contact-grid">
+          {/* Left - Info */}
+          <div className="tb-contact-info">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="subtitle-gold">Connect With Us</span>
-              <h2 className="contact-title-fancy">
-                Ready to Start Your <br />
-                <span className="highlight">Transformation?</span>
+              <span className="subtitle-gold">Get In Touch</span>
+              <h2 className="tb-contact-title">
+                TELL US WHAT<br />
+                YOU'RE <span className="highlight">BUILDING.</span>
               </h2>
-              <p className="contact-desc-fancy">
-                Every extraordinary project starts with a conversation. Let's discuss your vision and how we can bring it to life.
+              <p className="tb-contact-desc">
+                Every extraordinary project starts with a conversation. 
+                Let's discuss your vision and how we can bring it to life.
               </p>
 
-              <div className="fancy-contact-methods">
-                <div className="method-item">
-                  <span className="method-label">Direct Line</span>
-                  <a href="tel:9042994364" className="method-link">(904) 299-4364</a>
+              <div className="tb-contact-methods">
+                <div className="tb-method">
+                  <span className="tb-method-label">Direct Line</span>
+                  <a href="tel:9042994364" className="tb-method-value">(904) 299-4364</a>
                 </div>
-                <div className="method-item">
-                  <span className="method-label">Digital Correspondence</span>
-                  <a href="mailto:Ldremodelingjacksonville@gmail.com" className="method-link">Ldremodelingjacksonville@gmail.com</a>
+                <div className="tb-method">
+                  <span className="tb-method-label">Email</span>
+                  <a href="mailto:Ldremodelingjacksonville@gmail.com" className="tb-method-value">
+                    Ldremodelingjacksonville@gmail.com
+                  </a>
                 </div>
-                <div className="method-item">
-                  <span className="method-label">Base of Operations</span>
-                  <span className="method-link">Jacksonville, Florida</span>
+                <div className="tb-method">
+                  <span className="tb-method-label">Location</span>
+                  <span className="tb-method-value">Jacksonville, Florida</span>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          <div className="contact-form-fancy">
+          {/* Right - Form */}
+          <div className="tb-contact-form-wrap">
             <motion.form 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="fancy-form-box"
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="tb-form"
             >
-              <div className="fancy-input-row">
-                <div className="fancy-field">
+              <div className="tb-form-row">
+                <div className="tb-form-field">
                   <label>Your Name</label>
-                  <input type="text" placeholder="Johnathan Doe" required />
+                  <input type="text" placeholder="John Doe" required />
                 </div>
-                <div className="fancy-field">
+                <div className="tb-form-field">
                   <label>Email Address</label>
                   <input type="email" placeholder="john@example.com" required />
                 </div>
               </div>
 
-              <div className="fancy-input-row">
-                <div className="fancy-field">
-                  <label>Inquiry Type</label>
+              <div className="tb-form-row">
+                <div className="tb-form-field">
+                  <label>Service Needed</label>
                   <select required>
                     <option value="">Select a service</option>
-                    <option value="kitchen">Gourmet Kitchen</option>
-                    <option value="bathroom">Spa-Grade Bathroom</option>
-                    <option value="full">Full Home Overhaul</option>
-                    <option value="other">Other Inquiry</option>
+                    <option value="kitchen">Kitchen Remodeling</option>
+                    <option value="bathroom">Bathroom Renovation</option>
+                    <option value="flooring">Flooring Installation</option>
+                    <option value="adu">ADU</option>
+                    <option value="painting">Painting</option>
+                    <option value="decks">Decks & Patios</option>
+                    <option value="commercial">Commercial</option>
+                    <option value="other">Other</option>
                   </select>
                 </div>
-                <div className="fancy-field">
+                <div className="tb-form-field">
                   <label>Phone Number</label>
                   <input type="tel" placeholder="(904) 000-0000" />
                 </div>
               </div>
 
-              <div className="fancy-field">
-                <label>Project Ambition</label>
-                <textarea placeholder="Describe your dream project..." rows="4"></textarea>
+              <div className="tb-form-field">
+                <label>Project Details</label>
+                <textarea placeholder="Tell us about your project..." rows="4"></textarea>
               </div>
 
-              <div className="form-action-fancy">
-                <MagneticButton>
-                  <button type="submit" className="btn btn-primary btn-full">
-                    Begin Transformation <ArrowRight size={18} />
-                  </button>
-                </MagneticButton>
-              </div>
+              <button type="submit" className="btn btn-primary tb-submit-btn">
+                Submit Request <ArrowRight size={16} />
+              </button>
             </motion.form>
           </div>
         </div>

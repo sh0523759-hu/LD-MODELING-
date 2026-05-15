@@ -1,139 +1,166 @@
-.contact-fancy {
-  background-color: #0d0d0d;
+/* ===== TB CONTACT SECTION ===== */
+.tb-contact {
+  background: var(--void-light);
 }
 
-.contact-grid-fancy {
+.tb-contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 10vw;
-  align-items: flex-start;
+  gap: 5rem;
+  align-items: start;
 }
 
-.contact-title-fancy {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  color: #fff;
-  margin-top: 1.5rem;
-  margin-bottom: 2.5rem;
+/* Info Side */
+.tb-contact-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.5rem);
   line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 1.5rem;
 }
 
-.contact-desc-fancy {
-  font-size: 1.1rem;
-  color: var(--text-muted);
+.tb-contact-desc {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--concrete);
   line-height: 1.8;
-  max-width: 450px;
-  margin-bottom: 5rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.02em;
 }
 
-.fancy-contact-methods {
+.tb-contact-methods {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 
-.method-item {
+.tb-method {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tb-method-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.tb-method-value {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--bone);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a.tb-method-value:hover {
+  color: var(--gold);
+}
+
+/* Form Side */
+.tb-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  background: var(--void-card);
+}
+
+.tb-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.tb-form-field {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.method-label {
-  font-size: 0.7rem;
+.tb-form-field label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--concrete);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--primary);
-  font-weight: 800;
 }
 
-.method-link {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  color: #fff;
-  transition: var(--transition);
-}
-
-.method-link:hover {
-  color: var(--primary);
-}
-
-/* Form Fancy */
-.fancy-form-box {
-  background: #141414;
-  padding: 5rem;
-  border: 1px solid var(--border);
-}
-
-.fancy-input-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
-}
-
-.fancy-field {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-}
-
-.fancy-field label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--text-muted);
-  font-weight: 700;
-}
-
-.fancy-field input, 
-.fancy-field select,
-.fancy-field textarea {
+.tb-form-field input,
+.tb-form-field select,
+.tb-form-field textarea {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.9rem 1rem;
   background: transparent;
-  border: none;
-  border-bottom: 1px solid #333;
-  padding: 1rem 0;
-  color: #fff;
-  font-family: var(--font-main);
-  font-size: 1rem;
-  transition: border-color 0.4s ease;
-}
-
-.fancy-field input:focus,
-.fancy-field select:focus,
-.fancy-field textarea:focus {
+  border: 1px solid var(--border);
+  color: var(--white);
   outline: none;
-  border-color: var(--primary);
+  transition: border-color 0.3s;
+  letter-spacing: 0.02em;
 }
 
-.fancy-field select option {
-  background: #141414;
-  color: #fff;
+.tb-form-field input::placeholder,
+.tb-form-field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.25);
 }
 
-.btn-full {
+.tb-form-field input:focus,
+.tb-form-field select:focus,
+.tb-form-field textarea:focus {
+  border-color: var(--gold);
+}
+
+.tb-form-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A8A8A8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.tb-form-field select option {
+  background: var(--void);
+  color: var(--white);
+}
+
+.tb-form-field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.tb-submit-btn {
   width: 100%;
-  justify-content: space-between;
+  margin-top: 1rem;
+  padding: 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
 }
 
 @media (max-width: 1024px) {
-  .contact-grid-fancy {
+  .tb-contact-grid {
     grid-template-columns: 1fr;
-    gap: 6rem;
-  }
-  .fancy-form-box {
-    padding: 3rem;
+    gap: 3rem;
   }
 }
 
 @media (max-width: 768px) {
-  .contact-title-fancy {
-    font-size: 2.5rem;
-  }
-  .method-link {
-    font-size: 1.4rem;
-  }
-  .fancy-input-row {
+  .tb-form-row {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 1rem;
+  }
+
+  .tb-form {
+    padding: 1.5rem;
   }
 }

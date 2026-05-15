@@ -1,44 +1,11 @@
+/* ===== APP WRAPPER ===== */
 .app-wrapper {
-  position: relative;
-  width: 100%;
-  background-color: #000;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--void);
 }
 
-.app-wrapper::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://grainy-gradients.vercel.app/noise.svg');
-  opacity: 0.05;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-main {
-  width: 100%;
-  position: relative;
-  background-color: #000;
-}
-
-section {
-  width: 100%;
-  padding: 100px 0;
-  background-color: #000;
-  overflow: clip; /* Clip horizontal overflow without breaking sticky animations */
-}
-
-@media (max-width: 768px) {
-  section {
-    padding: 60px 0;
-  }
-}
-
-@media (max-width: 480px) {
-  section {
-    padding: 40px 0;
-  }
+.app-wrapper main {
+  flex: 1;
 }

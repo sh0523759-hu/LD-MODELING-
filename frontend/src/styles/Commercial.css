@@ -1,0 +1,108 @@
+/* ===== COMMERCIAL SECTION ===== */
+.tb-commercial {
+  background: var(--void);
+  padding: 10rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.tb-commercial-pre {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.tb-commercial-title {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 5rem;
+}
+
+.tb-commercial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.tb-commercial-card {
+  background: var(--void-card);
+  border: 1px solid var(--border);
+  padding: 3rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s var(--ease-out);
+  cursor: pointer;
+}
+
+.tb-commercial-card:hover {
+  border-color: var(--gold);
+  background: var(--void-light);
+}
+
+.tb-commercial-name {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.tb-commercial-arrow {
+  color: var(--concrete);
+  transition: transform 0.4s var(--ease-out), color 0.3s;
+}
+
+.tb-commercial-card:hover .tb-commercial-arrow {
+  transform: translateX(5px);
+  color: var(--gold);
+}
+
+.tb-commercial-footer {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.tb-commercial-link {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.3s;
+}
+
+.tb-commercial-link:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+  .tb-commercial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tb-commercial-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tb-commercial-title {
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,120 @@
+/* ===== PROJECT GALLERY — Sticky Horizontal Scroll ===== */
+.tb-gallery-sticky-wrapper {
+  position: relative;
+  height: 400vh; /* Determines horizontal scroll length */
+  background: var(--void);
+}
+
+.tb-gallery-sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 120px; /* Space for fixed navbar */
+}
+
+.tb-gallery-header {
+  margin-bottom: 2rem;
+  padding: 0 4rem;
+}
+
+.tb-gallery-title {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.tb-gallery-horizontal-container {
+  padding-left: 4rem;
+}
+
+.tb-gallery-track {
+  display: flex;
+  gap: 3rem;
+  width: fit-content;
+}
+
+.tb-gallery-card {
+  flex-shrink: 0;
+  width: 60vw;
+  max-width: 900px;
+}
+
+.tb-gallery-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 70vh;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+
+.tb-gallery-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 3rem;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.tb-gallery-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.tb-gallery-card:hover .tb-gallery-card-img {
+  transform: scale(1.05);
+}
+
+.tb-gallery-card-info {
+  width: 100%;
+}
+
+.tb-gallery-meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.tb-gallery-card-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 2.2rem;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .tb-gallery-sticky-wrapper {
+    height: 300vh;
+  }
+  .tb-gallery-card {
+    width: 85vw;
+  }
+  .tb-gallery-header {
+    padding: 0 1.5rem;
+  }
+  .tb-gallery-horizontal-container {
+    padding-left: 1.5rem;
+  }
+}
