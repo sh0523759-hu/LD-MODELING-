@@ -1,71 +1,61 @@
-/* ===== VIDEO TESTIMONIAL ===== */
+/* ===== TESTIMONIAL QUOTE SECTION ===== */
 .tb-video-section {
-  background: var(--void);
-  padding: 6rem 0 8rem;
+  background: var(--void-card);
+  padding: 8rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
-.tb-video-box {
-  max-width: 500px;
-  margin: 0 auto 5rem;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-}
-
-.tb-video-player {
-  width: 100%;
-  display: block;
-  aspect-ratio: 3 / 4;
-  min-height: 650px;
-  object-fit: cover;
-  background: #000;
-}
-
-/* Quote */
-.tb-video-quote-section {
+.tb-video-quote-centered {
   text-align: center;
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.tb-video-quote-mark {
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  color: var(--gold);
+  line-height: 0.5;
+  opacity: 0.7;
+  display: block;
 }
 
 .tb-video-quote {
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   font-style: italic;
   font-weight: 400;
   color: var(--bone);
   line-height: 1.8;
-  margin-bottom: 1.5rem;
+  margin: 0;
 }
 
 .tb-video-author {
   font-family: var(--font-mono);
   font-size: 0.6rem;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.2em;
-  color: var(--concrete);
+  color: var(--gold);
   text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
   .tb-video-section {
-    padding: 4rem 0 5rem;
-  }
-
-  .tb-video-box {
-    margin-bottom: 3rem;
-    max-width: 90%;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4); /* Smaller shadow to prevent overflow */
-  }
-  
-  .tb-video-player {
-    min-height: auto;
-    aspect-ratio: 9 / 16;
+    padding: 5rem 0;
   }
 
   .tb-video-quote {
     font-size: 1.1rem;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .tb-video-quote-mark {
+    font-size: 3rem;
   }
 }
+

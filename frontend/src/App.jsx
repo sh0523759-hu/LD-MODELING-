@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './layout/Navbar';
 import Hero from './sections/Hero';
 import Disciplines from './sections/Disciplines';
+import Services from './sections/Services';
 import ProjectGallery from './sections/ProjectGallery';
 import VideoTestimonial from './sections/VideoTestimonial';
 import Testimonials from './sections/Testimonials';
@@ -19,6 +20,7 @@ function App() {
       <main>
         <Hero />
         <Disciplines />
+        <Services />
         <ProjectGallery />
         <VideoTestimonial />
         <Testimonials />
