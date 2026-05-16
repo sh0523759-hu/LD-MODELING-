@@ -30,12 +30,15 @@ const Neighborhoods = () => {
             <motion.div 
               key={loc}
               className="tb-neighborhood-card"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
             >
-              <span className="tb-neighborhood-name">{loc}</span>
+              <div className="tb-neighborhood-card-inner">
+                <span className="tb-neighborhood-icon">📍</span>
+                <span className="tb-neighborhood-name">{loc}</span>
+              </div>
             </motion.div>
           ))}
         </div>

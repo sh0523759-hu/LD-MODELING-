@@ -1,3 +1,4 @@
+/* ===== NEIGHBORHOODS SECTION ===== */
 .tb-neighborhoods {
   background: var(--void);
   padding: 10rem 0 0;
@@ -24,36 +25,93 @@
   margin-bottom: 6rem;
 }
 
+/* ===== PREMIUM GRID ===== */
 .tb-neighborhoods-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  border-top: 1px solid var(--border);
-  border-left: 1px solid var(--border);
+  gap: 1.5rem;
+  padding: 0 4rem 6rem;
 }
 
+/* Each Card */
 .tb-neighborhood-card {
-  background: var(--void);
-  height: 180px;
+  position: relative;
+  background: var(--void-card);
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  transition: all 0.4s var(--ease-out);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
   cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.35s var(--ease-out), border-color 0.35s, box-shadow 0.35s;
+}
+
+/* Gold glow line at bottom on hover */
+.tb-neighborhood-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s var(--ease-out);
+}
+
+/* Subtle shimmer background on hover */
+.tb-neighborhood-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(197, 160, 89, 0.07) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
 .tb-neighborhood-card:hover {
-  background: var(--void-light);
+  transform: translateY(-4px);
+  border-color: rgba(197, 160, 89, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(197, 160, 89, 0.12);
+}
+
+.tb-neighborhood-card:hover::after {
+  transform: scaleX(1);
+}
+
+.tb-neighborhood-card:hover::before {
+  opacity: 1;
+}
+
+/* Card content */
+.tb-neighborhood-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tb-neighborhood-icon {
+  font-size: 1.2rem;
+  opacity: 0.4;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.tb-neighborhood-card:hover .tb-neighborhood-icon {
+  opacity: 0.9;
+  transform: scale(1.15);
 }
 
 .tb-neighborhood-name {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   color: var(--concrete);
   text-transform: uppercase;
   text-align: center;
@@ -64,8 +122,9 @@
   color: var(--gold);
 }
 
+/* Footer */
 .tb-neighborhoods-footer {
-  margin-top: 5rem;
+  padding: 0 4rem 8rem;
   text-align: center;
 }
 
@@ -80,6 +139,7 @@
   color: var(--gold);
 }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .tb-neighborhoods-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -90,22 +150,35 @@
   .tb-neighborhoods-header {
     padding: 0 1.5rem 3rem;
   }
-  
+
   .tb-neighborhoods-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 1.5rem 4rem;
+    gap: 1rem;
   }
-  
+
   .tb-neighborhoods-title {
     font-size: clamp(1.8rem, 10vw, 2.4rem);
     margin-bottom: 2rem;
+  }
+
+  .tb-neighborhoods-footer {
+    padding: 0 1.5rem 5rem;
   }
 }
 
 @media (max-width: 480px) {
   .tb-neighborhoods-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
+
   .tb-neighborhood-card {
-    height: 140px;
+    height: 110px;
+  }
+
+  .tb-neighborhood-name {
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
   }
 }
