@@ -19,7 +19,7 @@ const Footer = () => {
           {/* Left: Brand & Contacts */}
           <div className="tb-footer-left">
             <img 
-              src="/LD Remodeling  images/logo.png" 
+              src="/LD Remodeling  images/imgi_4_Gemini_Generated_Image_5vvghp5vvghp5vvg-removebg-preview.png" 
               alt="LD Remodeling" 
               className="tb-footer-logo" 
             />

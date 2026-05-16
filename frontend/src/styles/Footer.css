@@ -203,14 +203,33 @@
   }
 }
 
+@media (max-width: 768px) {
+  .tb-footer-hint {
+    margin-bottom: 3rem;
+  }
+  .tb-footer-hint p {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+  .tb-footer-main {
+    margin-bottom: 3rem;
+  }
+}
+
 @media (max-width: 600px) {
   .tb-footer-right {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
   
   .tb-footer-bottom {
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
+  }
+  
+  .tb-footer-legal {
+    justify-content: center;
+    gap: 1.5rem;
   }
 }

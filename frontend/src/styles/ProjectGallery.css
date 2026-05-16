@@ -6,14 +6,18 @@
 }
 
 .tb-gallery-sticky-content {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  padding-top: 120px; /* Space for fixed navbar */
+  padding-top: 120px;
+  z-index: 10;
+  background: var(--void); /* Ensure background shows properly */
 }
 
 .tb-gallery-header {
@@ -33,6 +37,7 @@
 
 .tb-gallery-horizontal-container {
   padding-left: 4rem;
+  overflow: hidden; /* Ensure track doesn't cause page-level horizontal scroll */
 }
 
 .tb-gallery-track {
@@ -106,15 +111,40 @@
 
 @media (max-width: 768px) {
   .tb-gallery-sticky-wrapper {
-    height: 300vh;
+    height: 500vh;
+  }
+  .tb-gallery-sticky-content {
+    padding-top: 100px;
   }
   .tb-gallery-card {
-    width: 85vw;
+    width: 80vw;
+  }
+  .tb-gallery-card-img-wrap {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
   }
   .tb-gallery-header {
     padding: 0 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .tb-gallery-title {
+    font-size: clamp(1.8rem, 10vw, 2.5rem);
   }
   .tb-gallery-horizontal-container {
     padding-left: 1.5rem;
+  }
+  .tb-gallery-card-title {
+    font-size: 1.5rem;
+  }
+  .tb-gallery-card-overlay {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tb-gallery-card {
+    width: 88vw;
+  }
+  .tb-gallery-track {
+    gap: 1.5rem;
   }
 }

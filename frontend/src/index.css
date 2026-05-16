@@ -22,7 +22,8 @@
   /* Layout */
   --container-max: 1400px;
   --section-pad: 120px;
-  --section-pad-mobile: 60px;
+  --section-pad-mobile: 80px;
+  --section-pad-tiny: 60px;
   
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -45,6 +46,7 @@ html {
   padding: 0;
   width: 100%;
   background-color: var(--void);
+  display: block;
 }
 
 body {
@@ -54,8 +56,8 @@ body {
   line-height: 1.6;
   font-size: 14px;
   font-weight: 400;
+  position: relative; /* Required for scroll calculations */
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Standard scrollbar removed for normal feel */
@@ -207,6 +209,21 @@ h3 {
     padding: var(--section-pad-mobile) 0;
   }
   .container {
-    padding: 0 1.25rem;
+    padding: 0 1.5rem;
+  }
+  h1 {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+  h2 {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .section-padding {
+    padding: var(--section-pad-tiny) 0;
+  }
+  .container {
+    padding: 0 1rem;
   }
 }

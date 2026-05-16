@@ -35,14 +35,18 @@ const projects = [
 
 const ProjectGallery = () => {
   const targetRef = useRef(null);
+
+  // The KEY fix: use offset to track when this section scrolls through the viewport
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-72%"]);
 
   return (
-    <section ref={targetRef} className="tb-gallery-sticky-wrapper">
+    <section ref={targetRef} className="tb-gallery-sticky-wrapper" id="portfolio">
+      {/* The sticky element must be a DIRECT child of the scroll container */}
       <div className="tb-gallery-sticky-content">
         <div className="container">
           <motion.div 
@@ -83,3 +87,4 @@ const ProjectGallery = () => {
 };
 
 export default ProjectGallery;
+

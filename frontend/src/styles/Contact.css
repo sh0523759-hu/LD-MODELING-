@@ -150,17 +150,28 @@ a.tb-method-value:hover {
 @media (max-width: 1024px) {
   .tb-contact-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 4rem;
   }
 }
 
 @media (max-width: 768px) {
+  .tb-contact-title {
+    font-size: 2.2rem;
+  }
+  
   .tb-form-row {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .tb-form {
     padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tb-form {
+    padding: 1.25rem;
+    gap: 1.25rem;
   }
 }

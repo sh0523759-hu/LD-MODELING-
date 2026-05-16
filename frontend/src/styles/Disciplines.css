@@ -92,6 +92,6 @@
 
   .tb-disc-name,
   .tb-disc-dot {
-    font-size: clamp(2.5rem, 12vw, 4rem);
+    font-size: clamp(1.4rem, 8vw, 2rem);
   }
 }

@@ -98,11 +98,21 @@
 }
 
 @media (max-width: 768px) {
+  .tb-commercial {
+    padding: 6rem 0;
+  }
+  
   .tb-commercial-grid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
   
   .tb-commercial-title {
-    font-size: 3rem;
+    font-size: clamp(1.6rem, 9vw, 2.2rem);
+    margin-bottom: 3rem;
+  }
+  
+  .tb-commercial-card {
+    padding: 2rem 1.5rem;
   }
 }

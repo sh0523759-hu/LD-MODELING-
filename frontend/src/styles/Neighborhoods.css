@@ -87,17 +87,25 @@
 }
 
 @media (max-width: 768px) {
+  .tb-neighborhoods-header {
+    padding: 0 1.5rem 3rem;
+  }
+  
   .tb-neighborhoods-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
   
   .tb-neighborhoods-title {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 10vw, 2.4rem);
+    margin-bottom: 2rem;
   }
 }
 
 @media (max-width: 480px) {
   .tb-neighborhoods-grid {
     grid-template-columns: 1fr;
+  }
+  .tb-neighborhood-card {
+    height: 140px;
   }
 }
