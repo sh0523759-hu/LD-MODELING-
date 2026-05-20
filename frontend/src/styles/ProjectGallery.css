@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  padding-top: 120px;
+  padding-top: 100px;
   z-index: 10;
   background: var(--void); /* Ensure background shows properly */
 }
@@ -42,35 +42,29 @@
 
 .tb-gallery-track {
   display: flex;
-  gap: 3rem;
+  gap: 4rem;
   width: fit-content;
+  padding-right: 4rem;
 }
 
 .tb-gallery-card {
   flex-shrink: 0;
-  width: 60vw;
-  max-width: 900px;
+  width: 46vw;
+  max-width: 800px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .tb-gallery-card-img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 70vh;
+  aspect-ratio: 1.5; /* 3:2 landscape for premium cinematic photo feel */
   overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-}
-
-.tb-gallery-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
-  display: flex;
-  align-items: flex-end;
-  padding: 3rem;
-  opacity: 1;
-  transition: opacity 0.3s;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .tb-gallery-card-img {
@@ -78,73 +72,121 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.8s var(--ease-out);
+  transition: transform 0.8s var(--ease-out), filter 0.8s var(--ease-out);
 }
 
-.tb-gallery-card:hover .tb-gallery-card-img {
+.tb-gallery-hover-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 100px;
+  height: 100px;
+  background: var(--gold);
+  color: var(--black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.tb-gallery-card-img-wrap:hover .tb-gallery-card-img {
   transform: scale(1.05);
+  filter: brightness(0.7);
+}
+
+.tb-gallery-card-img-wrap:hover .tb-gallery-hover-circle {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.tb-gallery-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13, 13, 13, 0.85) 0%, rgba(13, 13, 13, 0.3) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem 2.5rem;
+  z-index: 1;
+  transition: all 0.4s var(--ease-out);
+}
+
+.tb-gallery-card-img-wrap:hover .tb-gallery-card-overlay {
+  background: linear-gradient(to top, rgba(13, 13, 13, 0.95) 0%, rgba(13, 13, 13, 0.5) 60%, rgba(13, 13, 13, 0.2) 100%);
 }
 
 .tb-gallery-card-info {
-  width: 100%;
+  position: relative;
+  z-index: 3;
 }
 
 .tb-gallery-meta {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   color: var(--gold);
   text-transform: uppercase;
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .tb-gallery-card-title {
   font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 2.2rem;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 3vw, 2.8rem); /* Bada sa (Big) */
   color: var(--white);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  transition: color 0.3s;
+}
+
+.tb-gallery-card-img-wrap:hover .tb-gallery-card-title {
+  color: var(--gold);
 }
 
 @media (max-width: 768px) {
   .tb-gallery-sticky-wrapper {
-    height: 500vh;
+    height: 300vh;
   }
   .tb-gallery-sticky-content {
-    padding-top: 100px;
+    padding-top: 80px;
   }
   .tb-gallery-card {
-    width: 80vw;
-  }
-  .tb-gallery-card-img-wrap {
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    width: 70vw;
   }
   .tb-gallery-header {
     padding: 0 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   .tb-gallery-title {
-    font-size: clamp(1.8rem, 10vw, 2.5rem);
+    font-size: clamp(2rem, 10vw, 3.5rem);
   }
   .tb-gallery-horizontal-container {
     padding-left: 1.5rem;
   }
   .tb-gallery-card-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   .tb-gallery-card-overlay {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .tb-gallery-card {
-    width: 88vw;
+    width: 85vw;
   }
   .tb-gallery-track {
-    gap: 1.5rem;
+    gap: 2rem;
   }
 }

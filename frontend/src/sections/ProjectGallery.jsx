@@ -42,7 +42,7 @@ const ProjectGallery = () => {
     offset: ["start start", "end end"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-72%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-55%"]);
 
   return (
     <section ref={targetRef} className="tb-gallery-sticky-wrapper" id="portfolio">
@@ -75,6 +75,7 @@ const ProjectGallery = () => {
                       </span>
                       <h3 className="tb-gallery-card-title">{project.title}</h3>
                     </div>
+                    <div className="tb-gallery-hover-circle">VIEW</div>
                   </div>
                 </div>
               </div>

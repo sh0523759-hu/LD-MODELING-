@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import '../styles/Services.css';
 
 const services = [
@@ -7,177 +7,164 @@ const services = [
     id: 'kitchen',
     number: '01',
     name: 'Kitchen',
-    tagline: 'Culinary Spaces, Redefined',
-    description: 'From sleek modern kitchens to warm traditional designs — we handle cabinetry, countertops, islands, backsplashes, and full gut renovations.',
+    tagline: 'Culinary Spaces',
     img: '/LD Remodeling  images/imgi_60_Whitekitchenwithnewislandcountertop.webp',
-    tags: ['Cabinetry', 'Countertops', 'Islands', 'Backsplash'],
   },
   {
     id: 'bathrooms',
     number: '02',
     name: 'Bathrooms',
-    tagline: 'Luxury Spa. Your Home.',
-    description: 'Transform your bathroom into a sanctuary. We specialize in custom tile work, vanities, walk-in showers, soaking tubs, and complete renovations.',
-    img: '/LD Remodeling  images/imgi_13_portf14-copyright-890x664-1.jpg',
-    tags: ['Custom Tile', 'Vanities', 'Walk-in Showers', 'Soaking Tubs'],
+    tagline: 'Luxury Spa',
+    img: '/LD Remodeling  images/imgi_17_our_renovations_bathroom_02.jpg',
   },
   {
     id: 'flooring',
     number: '03',
     name: 'Flooring',
-    tagline: 'The Foundation of Style',
-    description: 'Hardwood, luxury vinyl plank, tile, or carpet — we install all flooring types with precision. Includes subfloor prep, transitions, and finishing.',
+    tagline: 'Foundation of Style',
     img: '/LD Remodeling  images/imgi_58_Full-View-of-Whole-Floor-Remodel-_-Compelling-Homes.webp',
-    tags: ['Hardwood', 'Luxury Vinyl', 'Tile', 'Carpet'],
   },
   {
     id: 'adu',
     number: '04',
     name: 'ADU',
-    tagline: 'Accessory Dwelling Units',
-    description: 'Add value to your property with a fully permitted ADU. Garage conversions, backyard studios, in-law suites — built to code, built to last.',
+    tagline: 'Accessory Dwelling',
     img: '/LD Remodeling  images/imgi_23_barrington-family-addition-remodel-advance-design-studio-1.jpg',
-    tags: ['Garage Conversion', 'In-law Suite', 'Studio', 'Permitted'],
   },
   {
     id: 'painting',
     number: '05',
     name: 'Painting',
-    tagline: 'Color Changes Everything',
-    description: 'Interior and exterior painting done right. We prep every surface, use premium paints, and deliver a flawless finish that lasts for years.',
+    tagline: 'Color Changes',
     img: '/LD Remodeling  images/imgi_20_Expect-From-House-Painting.jpg',
-    tags: ['Interior', 'Exterior', 'Premium Paint', 'Prep & Finish'],
   },
   {
     id: 'decks',
     number: '06',
-    name: 'Decks & Patios',
-    tagline: 'Outdoor Living, Elevated',
-    description: 'Custom decks, covered patios, pergolas, and outdoor living spaces. We build with composite, wood, or concrete to match your vision.',
+    name: 'Decks',
+    tagline: 'Outdoor Living',
     img: '/LD Remodeling  images/imgi_21_Patio_Decks_750px_00022.jpg',
-    tags: ['Custom Decks', 'Patios', 'Pergolas', 'Composite & Wood'],
   },
 ];
 
-const Services = () => {
-  const [activeService, setActiveService] = useState(services[0]);
+const ServiceCard = ({ service, index, scrollYProgress, isMobile }) => {
+  // We have 6 cards:
+  // Card 0 (far left) -> moves further left
+  // Card 1 (near left) -> moves left
+  // Card 2 (center-left) -> moves slightly left to center focus
+  // Card 3 (center-right) -> moves slightly right to center focus
+  // Card 4 (near right) -> moves right
+  // Card 5 (far right) -> moves further right
+
+  let initialX, finalX, initialScale, finalScale, initialOpacity, finalOpacity;
+  const multX = isMobile ? 0.35 : 1.0; // scale down horizontal translation on mobile to fit screen
+
+  if (index === 0) {
+    initialX = `${-46 * multX}vw`; finalX = "-140vw";
+    initialScale = isMobile ? 0.75 : 0.72; finalScale = 0.55;
+    initialOpacity = 1; finalOpacity = 0;
+  } else if (index === 1) {
+    initialX = `${-23 * multX}vw`; finalX = "-100vw";
+    initialScale = isMobile ? 0.88 : 0.86; finalScale = 0.7;
+    initialOpacity = 1; finalOpacity = 0;
+  } else if (index === 2) {
+    initialX = `${-2 * multX}vw`; finalX = isMobile ? "-14vw" : "-22vw";
+    initialScale = 1.0; finalScale = isMobile ? 1.02 : 1.05;
+    initialOpacity = 1; finalOpacity = 1;
+  } else if (index === 3) {
+    initialX = `${2 * multX}vw`; finalX = isMobile ? "14vw" : "22vw";
+    initialScale = 1.0; finalScale = isMobile ? 1.02 : 1.05;
+    initialOpacity = 1; finalOpacity = 1;
+  } else if (index === 4) {
+    initialX = `${23 * multX}vw`; finalX = "100vw";
+    initialScale = isMobile ? 0.88 : 0.86; finalScale = 0.7;
+    initialOpacity = 1; finalOpacity = 0;
+  } else if (index === 5) {
+    initialX = `${46 * multX}vw`; finalX = "140vw";
+    initialScale = isMobile ? 0.75 : 0.72; finalScale = 0.55;
+    initialOpacity = 1; finalOpacity = 0;
+  }
+
+  const x = useTransform(scrollYProgress, [0, 1], [initialX, finalX]);
+  const scale = useTransform(scrollYProgress, [0, 1], [initialScale, finalScale]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [initialOpacity, finalOpacity]);
+  
+  // Dynamic rotation for side cards to look like an elegant spread
+  const initialRotate = index === 0 ? -6 : index === 1 ? -3 : index === 4 ? 3 : index === 5 ? 6 : 0;
+  const finalRotate = index === 0 ? -20 : index === 1 ? -12 : index === 2 ? -2 : index === 3 ? 2 : index === 4 ? 12 : 20;
+  const rotate = useTransform(scrollYProgress, [0, 1], [initialRotate, finalRotate]);
 
   return (
-    <section className="tb-services" id="services">
-      <div className="tb-services-inner">
+    <motion.div 
+      className="tb-service-stack-card"
+      style={{
+        x,
+        rotate,
+        scale,
+        opacity,
+        zIndex: (index === 2 || index === 3) ? 10 : 5 - index
+      }}
+    >
+      <div className="tb-service-stack-img-wrap">
+        <img src={service.img} alt={service.name} />
+        <div className="tb-service-stack-overlay">
+          <span className="tb-service-stack-num">{service.number}</span>
+          <h3 className="tb-service-stack-name">{service.name}</h3>
+          <p className="tb-service-stack-tagline">{service.tagline}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
-        {/* Header */}
+const Services = () => {
+  const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  return (
+    <section className="tb-services-stack-wrapper" id="services" ref={containerRef}>
+      <div className="tb-services-sticky">
+        
+        {/* Header - Stays Fixed or fades out */}
         <motion.div
-          className="tb-services-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          className="tb-services-header-centered"
+          style={{
+            opacity: useTransform(scrollYProgress, [0, 0.2], [1, 0]),
+            y: useTransform(scrollYProgress, [0, 0.2], [0, -50])
+          }}
         >
           <span className="subtitle-gold">WHAT WE DO</span>
           <h2 className="tb-services-title">
             OUR <span className="highlight">SERVICES</span>
           </h2>
           <p className="tb-services-subtitle">
-            Premium craftsmanship across every trade. Licensed, insured, and locally trusted in Jacksonville.
+            Keep scrolling to explore our expertise
           </p>
         </motion.div>
 
-        {/* Desktop Layout: List + Image */}
-        <div className="tb-services-body">
-
-          {/* Left: Service List */}
-          <div className="tb-services-list">
-            {services.map((service, i) => (
-              <motion.div
-                key={service.id}
-                className={`tb-service-row ${activeService.id === service.id ? 'active' : ''}`}
-                onClick={() => setActiveService(service)}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-              >
-                <span className="tb-service-num">{service.number}</span>
-                <div className="tb-service-row-info">
-                  <h3 className="tb-service-name">{service.name}</h3>
-                  <p className="tb-service-tagline">{service.tagline}</p>
-                </div>
-                <span className="tb-service-arrow">→</span>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Right: Active Image + Info */}
-          <div className="tb-services-preview">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeService.id}
-                className="tb-services-preview-inner"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="tb-services-img-wrap">
-                  <img
-                    src={activeService.img}
-                    alt={activeService.name}
-                    className="tb-services-img"
-                  />
-                  <div className="tb-services-img-overlay">
-                    <span className="tb-services-img-num">{activeService.number}</span>
-                  </div>
-                </div>
-                <div className="tb-services-detail">
-                  <h3 className="tb-services-detail-title">{activeService.name}</h3>
-                  <p className="tb-services-detail-desc">{activeService.description}</p>
-                  <div className="tb-services-tags">
-                    {activeService.tags.map(tag => (
-                      <span key={tag} className="tb-service-tag">{tag}</span>
-                    ))}
-                  </div>
-                  <a href="#contact-section" className="btn btn-primary tb-services-cta">
-                    GET A FREE QUOTE →
-                  </a>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-
-        {/* Mobile: Cards */}
-        <div className="tb-services-mobile-cards">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.id}
-              className="tb-service-mobile-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-            >
-              <div className="tb-service-mobile-img-wrap">
-                <img src={service.img} alt={service.name} className="tb-service-mobile-img" />
-                <div className="tb-service-mobile-overlay">
-                  <span className="tb-service-mobile-num">{service.number}</span>
-                  <h3 className="tb-service-mobile-name">{service.name}</h3>
-                </div>
-              </div>
-              <div className="tb-service-mobile-body">
-                <p className="tb-service-mobile-tagline">{service.tagline}</p>
-                <p className="tb-service-mobile-desc">{service.description}</p>
-                <div className="tb-services-tags">
-                  {service.tags.map(tag => (
-                    <span key={tag} className="tb-service-tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+        {/* Cards container */}
+        <div className="tb-services-deck">
+          {services.map((service, index) => (
+            <ServiceCard 
+              key={service.id} 
+              service={service} 
+              index={index} 
+              scrollYProgress={scrollYProgress}
+              isMobile={isMobile}
+            />
           ))}
-          <div className="tb-services-mobile-cta">
-            <a href="#contact-section" className="btn btn-primary">GET A FREE QUOTE →</a>
-          </div>
         </div>
 
       </div>

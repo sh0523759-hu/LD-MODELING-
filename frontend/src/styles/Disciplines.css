@@ -2,9 +2,27 @@
 .tb-disciplines {
   background: var(--void);
   padding: 10rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.tb-disciplines-bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.tb-disciplines-bg-default {
+  opacity: 0.08; /* Very subtle default background image */
+  filter: grayscale(100%) blur(2px);
 }
 
 .tb-disciplines-inner {
+  position: relative;
+  z-index: 1;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;

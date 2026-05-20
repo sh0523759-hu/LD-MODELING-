@@ -64,6 +64,15 @@ const Hero = () => {
               COMPROMISE<span className="tb-gold-dot">.</span>
             </motion.span>
           </div>
+          
+          <motion.div 
+            className="tb-hero-static-text"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1 }}
+          >
+            REMODELING • DESIGN • BUILD • KITCHENS • BATHROOMS • ADDITIONS • FLOORING • CUSTOM HOMES
+          </motion.div>
         </div>
 
         {/* Bottom: Scroll line + tag */}
