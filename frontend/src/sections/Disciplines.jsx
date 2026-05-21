@@ -43,9 +43,8 @@ const Disciplines = () => {
           {/* Left Column */}
           <div className="tb-disc-col tb-disc-left">
             {disciplines.filter(d => d.side === 'left').map((disc, i) => (
-              <motion.a
+              <motion.div
                 key={disc.name}
-                href={disc.href}
                 className="tb-disc-link"
                 onMouseEnter={() => setHoveredImage(disc.img)}
                 onMouseLeave={() => setHoveredImage(null)}
@@ -62,16 +61,15 @@ const Disciplines = () => {
                   </motion.span>
                 </div>
                 <span className="tb-disc-dot">.</span>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
 
           {/* Right Column */}
           <div className="tb-disc-col tb-disc-right">
             {disciplines.filter(d => d.side === 'right').map((disc, i) => (
-              <motion.a
+              <motion.div
                 key={disc.name}
-                href={disc.href}
                 className="tb-disc-link"
                 onMouseEnter={() => setHoveredImage(disc.img)}
                 onMouseLeave={() => setHoveredImage(null)}
@@ -88,7 +86,7 @@ const Disciplines = () => {
                   </motion.span>
                 </div>
                 <span className="tb-disc-dot">.</span>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
         </div>

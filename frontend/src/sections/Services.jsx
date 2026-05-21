@@ -47,62 +47,83 @@ const services = [
   },
 ];
 
-const ServiceCard = ({ service, index, scrollYProgress, isMobile }) => {
-  // We have 6 cards:
-  // Card 0 (far left) -> moves further left
-  // Card 1 (near left) -> moves left
-  // Card 2 (center-left) -> moves slightly left to center focus
-  // Card 3 (center-right) -> moves slightly right to center focus
-  // Card 4 (near right) -> moves right
-  // Card 5 (far right) -> moves further right
+const getCardConfig = (index, layoutMode) => {
+  const configs = {
+    mobile: [
+      { initialX: 0, finalX: -100, scale: 1.0, finalScale: 0.9, zIndex: 10 },  // Card 0 (Kitchen) - topmost
+      { initialX: 0, finalX: 100, scale: 1.0, finalScale: 0.9, zIndex: 9 },   // Card 1 (Bathrooms)
+      { initialX: 0, finalX: -100, scale: 1.0, finalScale: 0.9, zIndex: 8 },  // Card 2 (Flooring)
+      { initialX: 0, finalX: 100, scale: 1.0, finalScale: 0.9, zIndex: 7 },   // Card 3 (ADU)
+      { initialX: 0, finalX: -100, scale: 1.0, finalScale: 0.9, zIndex: 6 },  // Card 4 (Painting)
+      { initialX: 0, finalX: 100, scale: 1.0, finalScale: 0.9, zIndex: 5 },   // Card 5 (Decks) - bottommost
+    ],
+    tablet: [
+      { initialX: -30, finalX: -100, scale: 0.6, finalScale: 0.45, zIndex: 8 },
+      { initialX: -15, finalX: -70, scale: 0.8, finalScale: 0.65, zIndex: 9 },
+      { initialX: 0, finalX: 0, scale: 1.0, finalScale: 1.05, zIndex: 10 },     // Center (stays in mid)
+      { initialX: 15, finalX: 70, scale: 0.8, finalScale: 0.65, zIndex: 9 },
+      { initialX: 30, finalX: 100, scale: 0.6, finalScale: 0.45, zIndex: 8 },
+      { initialX: 38, finalX: 130, scale: 0.5, finalScale: 0.35, zIndex: 7 },
+    ],
+    desktop: [
+      { initialX: -40, finalX: -140, scale: 0.6, finalScale: 0.45, zIndex: 8 },
+      { initialX: -20, finalX: -100, scale: 0.8, finalScale: 0.65, zIndex: 9 },
+      { initialX: 0, finalX: 0, scale: 1.0, finalScale: 1.05, zIndex: 10 },     // Center (stays in mid)
+      { initialX: 20, finalX: 100, scale: 0.8, finalScale: 0.65, zIndex: 9 },
+      { initialX: 40, finalX: 140, scale: 0.6, finalScale: 0.45, zIndex: 8 },
+      { initialX: 50, finalX: 180, scale: 0.5, finalScale: 0.35, zIndex: 7 },
+    ]
+  };
+  return configs[layoutMode][index];
+};
 
-  let initialX, finalX, initialScale, finalScale, initialOpacity, finalOpacity;
-  const multX = isMobile ? 0.35 : 1.0; // scale down horizontal translation on mobile to fit screen
-
-  if (index === 0) {
-    initialX = `${-46 * multX}vw`; finalX = "-140vw";
-    initialScale = isMobile ? 0.75 : 0.72; finalScale = 0.55;
-    initialOpacity = 1; finalOpacity = 0;
-  } else if (index === 1) {
-    initialX = `${-23 * multX}vw`; finalX = "-100vw";
-    initialScale = isMobile ? 0.88 : 0.86; finalScale = 0.7;
-    initialOpacity = 1; finalOpacity = 0;
-  } else if (index === 2) {
-    initialX = `${-2 * multX}vw`; finalX = isMobile ? "-14vw" : "-22vw";
-    initialScale = 1.0; finalScale = isMobile ? 1.02 : 1.05;
-    initialOpacity = 1; finalOpacity = 1;
-  } else if (index === 3) {
-    initialX = `${2 * multX}vw`; finalX = isMobile ? "14vw" : "22vw";
-    initialScale = 1.0; finalScale = isMobile ? 1.02 : 1.05;
-    initialOpacity = 1; finalOpacity = 1;
-  } else if (index === 4) {
-    initialX = `${23 * multX}vw`; finalX = "100vw";
-    initialScale = isMobile ? 0.88 : 0.86; finalScale = 0.7;
-    initialOpacity = 1; finalOpacity = 0;
-  } else if (index === 5) {
-    initialX = `${46 * multX}vw`; finalX = "140vw";
-    initialScale = isMobile ? 0.75 : 0.72; finalScale = 0.55;
-    initialOpacity = 1; finalOpacity = 0;
+const getCardScrollRange = (index, layoutMode) => {
+  if (layoutMode === 'mobile') {
+    const ranges = [
+      [0.0, 0.20],  // Card 0 (Kitchen - goes first)
+      [0.15, 0.35], // Card 1 (Bathrooms - goes second)
+      [0.30, 0.50], // Card 2 (Flooring - goes third)
+      [0.45, 0.65], // Card 3 (ADU - goes fourth)
+      [0.60, 0.80], // Card 4 (Painting - goes fifth)
+      [0.75, 0.95], // Card 5 (Decks - goes last)
+    ];
+    return ranges[index];
   }
+  return [0, 1];
+};
 
-  const x = useTransform(scrollYProgress, [0, 1], [initialX, finalX]);
-  const scale = useTransform(scrollYProgress, [0, 1], [initialScale, finalScale]);
-  const opacity = useTransform(scrollYProgress, [0, 0.85], [initialOpacity, finalOpacity]);
-  
-  // Dynamic rotation for side cards to look like an elegant spread
-  const initialRotate = index === 0 ? -6 : index === 1 ? -3 : index === 4 ? 3 : index === 5 ? 6 : 0;
-  const finalRotate = index === 0 ? -20 : index === 1 ? -12 : index === 2 ? -2 : index === 3 ? 2 : index === 4 ? 12 : 20;
-  const rotate = useTransform(scrollYProgress, [0, 1], [initialRotate, finalRotate]);
+const ServiceCard = ({ service, index, scrollYProgress, layoutMode }) => {
+  const config = getCardConfig(index, layoutMode);
+
+  const initialX = `${config.initialX}vw`;
+  const finalX = `${config.finalX}vw`;
+  const initialScale = config.scale;
+  const finalScale = config.finalScale;
+
+  const scrollRange = getCardScrollRange(index, layoutMode);
+
+  const x = useTransform(scrollYProgress, scrollRange, [initialX, finalX]);
+  const scale = useTransform(scrollYProgress, scrollRange, [initialScale, finalScale]);
+
+  // Compute opacity range dynamically to satisfy React's Rules of Hooks (no conditional hook calls)
+  const opacityInputRange = layoutMode === 'mobile' 
+    ? scrollRange 
+    : (index === 2 ? [0, 1] : [0, 0.85]);
+
+  const opacityOutputRange = layoutMode === 'mobile'
+    ? [1, 0]
+    : (index === 2 ? [1, 1] : [1, 0]);
+
+  const opacity = useTransform(scrollYProgress, opacityInputRange, opacityOutputRange);
 
   return (
     <motion.div 
       className="tb-service-stack-card"
       style={{
         x,
-        rotate,
         scale,
         opacity,
-        zIndex: (index === 2 || index === 3) ? 10 : 5 - index
+        zIndex: config.zIndex
       }}
     >
       <div className="tb-service-stack-img-wrap">
@@ -119,13 +140,22 @@ const ServiceCard = ({ service, index, scrollYProgress, isMobile }) => {
 
 const Services = () => {
   const containerRef = useRef(null);
-  const [isMobile, setIsMobile] = React.useState(false);
+  const [layoutMode, setLayoutMode] = React.useState('desktop');
 
   React.useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setLayoutMode('mobile');
+      } else if (width < 1024) {
+        setLayoutMode('tablet');
+      } else {
+        setLayoutMode('desktop');
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
   
   const { scrollYProgress } = useScroll({
@@ -162,7 +192,7 @@ const Services = () => {
               service={service} 
               index={index} 
               scrollYProgress={scrollYProgress}
-              isMobile={isMobile}
+              layoutMode={layoutMode}
             />
           ))}
         </div>
