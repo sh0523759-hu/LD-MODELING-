@@ -128,7 +128,6 @@
   }
 }
 
-@media (max-width: 480px) {
 /* Static Text under heading */
 .tb-hero-static-text {
   font-family: var(--font-mono);
@@ -142,7 +141,7 @@
   line-height: 1.6;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .tb-hero-static-text {
     font-size: 0.7rem;
     margin-top: 1rem;
